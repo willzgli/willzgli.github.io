@@ -5,19 +5,22 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
 
-  <title> Tags - </title>
+  <title> 发布Gitbook至GitHub个人主页 - </title>
   <meta name="description" content="" />
-  <meta property="og:title" content="Tags" />
-  <meta name="twitter:title" content="Tags" />
+  <meta property="og:title" content="发布Gitbook至GitHub个人主页" />
+  <meta name="twitter:title" content="发布Gitbook至GitHub个人主页" />
+  <meta name="description" content="这里不讲如何生成gitbook的html 静态网页，跳过这一步，从如何发布静态网页到GitHub的个人主页(http://{username}">
+  <meta property="og:description" content="这里不讲如何生成gitbook的html 静态网页，跳过这一步，从如何发布静态网页到GitHub的个人主页(http://{username}">
+  <meta name="twitter:description" content="这里不讲如何生成gitbook的html 静态网页，跳过这一步，从如何发布静态网页到GitHub的个人主页(http://{username}">
   <meta property="og:image" content="https://rootdeep.github.io/rootdeep.jpg" />
   <meta name="twitter:image" content="https://rootdeep.github.io/rootdeep.jpg" />
   <meta name="twitter:card" content="summary" />
-  <meta property="og:url" content="https://rootdeep.github.io/tags/" />
+  <meta property="og:url" content="https://rootdeep.github.io/post/show-gitbook-with-github/" />
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="RootDeep" />
 
   <meta name="generator" content="Hugo 0.37" />
-  <link rel="canonical" href="https://rootdeep.github.io/tags/" />
+  <link rel="canonical" href="https://rootdeep.github.io/post/show-gitbook-with-github/" />
   <link rel="alternate" href="https://rootdeep.github.io/index.xml" type="application/rss+xml" title="RootDeep">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.7.1/katex.min.css" integrity="sha384-wITovz90syo1dJWVh32uuETPVEtGigN07tkttEqPv+uR2SE/mbQcG7ATL28aI9H0" crossorigin="anonymous">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
@@ -241,9 +244,9 @@
         <div class="row">
             
           <div class="col-lg-12 col-md-12 col-md-offset-0">
-            <div class="tags-heading">
+            <div class="post-heading">
 			     
-                     <h1  align="center">Tags</h1>
+                     <h1  align="center">发布Gitbook至GitHub个人主页</h1>
                            	
                 
             </div>
@@ -255,26 +258,131 @@
 
 
     
-  
-  <div class="container" role="main">
-    <article class="post-preview">
-      <div class="list-group col-lg-4 col-lg-offset-4 col-md-6 col-md-offset-3">
-      
-      <a href="https://rootdeep.github.io/tags/kubernetes/" class="list-group-item">
-          kubernetes<span class="badge">2</span></a>
-      
-      <a href="https://rootdeep.github.io/tags/gitbook-github/" class="list-group-item">
-          gitbook-github<span class="badge">1</span></a>
-      
-      <a href="https://rootdeep.github.io/tags/istio/" class="list-group-item">
-          istio<span class="badge">1</span></a>
-      
-      <a href="https://rootdeep.github.io/tags/service-mesh/" class="list-group-item">
-          service-mesh<span class="badge">1</span></a>
-      
-      </div>
-    </article>
-  </div>
+<div class="container" role="main">
+    <div class="row">
+        <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+            
+            <div>
+                <section id="datecount">
+                    <h4 id="date"> Tue May 15, 2018</h4>
+                </section>
+                <h5 id="wc">1100 Words|Read in about 3 Min</h5>
+                <h5 id="tags">Tags: 
+                    <a href="https://rootdeep.github.io//tags/gitbook-github">gitbook, github</a> &nbsp;
+                </h5>
+
+            </div>
+            <article role="main" class="blog-post">
+                <p>这里不讲如何生成gitbook的html 静态网页，跳过这一步，从如何发布静态网页到GitHub的个人主页(http://{username}.github.io)下说起。即本文的主题是通过域名<code>http://{username}.github.io/{gitbook_repository}</code> 实现访问自己的gitbook 内容。</p>
+
+<p><strong>准备工作</strong>:
+    1. 已经在github 创建了一个名称为{username}.github.io的项目，这个名称格式的项目将是你的个人主页的入口，地址为：http://{username}.github.io.
+    2. 已经生成了gitbook 的静态网页。通常在gitbook 的源文件下运行命令<code>gitbook build</code> ,生成的静态网页默认保存位置在<code>./_book</code>目录下。
+    3. 需要明白<code>Github Pages</code> 概念。具体地简单阅读此链接便可明白：<a href="https://help.github.com/articles/configuring-a-publishing-source-for-github-pages/">https://help.github.com/articles/configuring-a-publishing-source-for-github-pages/</a></p>
+
+<p><strong>方法原理：</strong></p>
+
+<p>在GitHub上新建一个项目，该项目将会具有两个分支
+   - master分支： 用来保存Gitbook的源文件
+   - gh-pages 分支：用来保存生成的静态网页
+   - 设置gh-pages 分支为 GitHub Pages site</p>
+
+<p>具体步骤：
+1. 在GitHub 新建一个仓库，名字就是访问域名中的{gitbook_repository}字段，本例中使用example-book 作为仓库名进行说明。</p>
+
+<ol>
+<li><p>将该仓库复制到本地（git clone example-book)</p>
+
+<ul>
+<li>为该项目添加.gitignore 文件，将_book 目录添加到忽略文件中去，以便在将源码上传到master 分支时，忽略_book 下的静态网页文件。</li>
+</ul></li>
+
+<li><p>为该仓库新建gh-pages 分支(git checkout -b gh-pages)</p></li>
+
+<li><p>建立gh-pages 的远程库 git push origin gh-pages</p></li>
+
+<li><p>清空分支gh-pages 的内容 (git rm -&gt;git add -&gt;git commit -&gt;git push)</p></li>
+
+<li><p>在一个新的目录复制远程仓库的gh-pages 分支并保存为 book-build</p></li>
+</ol>
+
+<p><code>git clone -b gh-pages git@github.com:{USERNAME}/example-book.git book-build</code></p>
+
+<ol>
+<li><p>在本地切回master分之后, 在主分支上编写gitbook 的源码</p></li>
+
+<li><p>使用<code>gitbook serve</code> 命令后，可以使用localhost:4000 查看生成的book</p></li>
+
+<li><p>确认生成book的内容无误后：</p>
+
+<ul>
+<li>将源码推送到远程master分支以便保存</li>
+<li>将_book 目录下的内容复制到book-build 目录下，并推送至远程gh-pages<br />
+分支</li>
+</ul></li>
+
+<li><p>确认使用gh-pages分支生成该仓库的主页，具体如下：
+进入项目&ndash;&gt;settings &ndash;&gt;下拉至Github Pages</p></li>
+</ol>
+
+<p><img src="/github-setttings.png" alt="github-setttings" /></p>
+
+<p><img src="/github-pages.png" alt="github-setttings" /></p>
+
+<p>​</p>
+
+<p>最后，使用http://{username}.github.io/example-book 域名访问Gitbook</p>
+
+<p><img src="/gitbook.png" alt="gitbook" /></p>
+
+            </article>
+
+            <ul class="pager blog-pager">
+                
+                <li class="previous">
+                    <a href="https://rootdeep.github.io/post/volume-management-part1/" data-toggle="tooltip" data-placement="top" title="K8s 卷管理源码分析（一）">&larr; Previous Post</a>
+                </li>
+                 
+            </ul>
+            <div>
+                 
+            </div>
+            
+            <div>
+                <section id="datecount">
+                    <h4 id="date"> Tue May 15, 2018</h4>
+                </section>
+                <h5 id="wc">1100 Words|Read in about 3 Min</h5>
+                <h5 id="tags">Tags: 
+                    <a href="https://rootdeep.github.io//tags/gitbook-github">gitbook, github</a> &nbsp;
+                </h5>
+            </div>
+            
+            <aside id=comments>
+                <div>
+                    <h2> Comments </h2>
+                </div>
+                <div id="container"></div>
+                <link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
+                <script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+                <script>
+                    var gitment = new Gitment({
+					    id: '发布Gitbook至GitHub个人主页
+                        owner: 'rootdeep', //github account
+                        repo: 'rootdeep.github.io', // github repo
+                        oauth: {
+                            client_id: 'a45f8ab669362a110f83',
+                            client_secret: '925eb6e429ff5eb575823cd6a7e193dcad2a61f4',
+                        },
+                    })
+                    gitment.render('container')
+                </script>
+            </aside>
+
+        </div>
+    </div>
+    </section>
+</div>
 
     <footer>
   <div class="container">

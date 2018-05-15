@@ -8,6 +8,11 @@
   </url>
   
   <url>
+    <loc>https://rootdeep.github.io/post/show-gitbook-with-github/</loc>
+    <lastmod>2018-05-15T19:33:57+08:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://rootdeep.github.io/post/volume-management-part1/</loc>
     <lastmod>2017-06-01T20:18:57+08:00</lastmod>
   </url>
@@ -25,6 +30,18 @@
   <url>
     <loc>https://rootdeep.github.io/categories/cloud-native/</loc>
     <lastmod>2017-06-01T20:18:57+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://rootdeep.github.io/tags/gitbook-github/</loc>
+    <lastmod>2018-05-15T19:33:57+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://rootdeep.github.io/categories/github/</loc>
+    <lastmod>2018-05-15T19:33:57+08:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -48,7 +65,7 @@
   
   <url>
     <loc>https://rootdeep.github.io/post/</loc>
-    <lastmod>2017-06-01T20:18:57+08:00</lastmod>
+    <lastmod>2018-05-15T19:33:57+08:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -66,7 +83,7 @@
   
   <url>
     <loc>https://rootdeep.github.io/tags/</loc>
-    <lastmod>2017-06-01T20:18:57+08:00</lastmod>
+    <lastmod>2018-05-15T19:33:57+08:00</lastmod>
     <priority>0</priority>
   </url>
   
