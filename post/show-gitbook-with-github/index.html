@@ -266,11 +266,7 @@
                 <section id="datecount">
                     <h4 id="date"> Tue May 15, 2018</h4>
                 </section>
-<<<<<<< HEAD
                 <h5 id="wc">1000 Words|Read in about 2 Min</h5>
-=======
-                <h5 id="wc">1100 Words|Read in about 3 Min</h5>
->>>>>>> 1f2fe96fca4549cf59cb2785784235ea96f06906
                 <h5 id="tags">Tags: 
                     <a href="https://rootdeep.github.io//tags/gitbook-github">gitbook, github</a> &nbsp;
                 </h5>
@@ -279,7 +275,6 @@
             <article role="main" class="blog-post">
                 <p>这里不讲如何生成gitbook的html 静态网页，跳过这一步，从如何发布静态网页到GitHub的个人主页(http://{username}.github.io)下说起。即本文的主题是通过域名<code>http://{username}.github.io/{gitbook_repository}</code> 实现访问自己的gitbook 内容。</p>
 
-<<<<<<< HEAD
 <p><strong>准备工作：</strong></p>
 
 <ol>
@@ -306,24 +301,6 @@
 <ol>
 <li><p>在GitHub 新建一个仓库，名字就是访问域名中的{gitbook_repository}字段，本例中使用example-book 作为仓库名进行说明。</p></li>
 
-=======
-<p><strong>准备工作</strong>:
-    1. 已经在github 创建了一个名称为{username}.github.io的项目，这个名称格式的项目将是你的个人主页的入口，地址为：http://{username}.github.io.
-    2. 已经生成了gitbook 的静态网页。通常在gitbook 的源文件下运行命令<code>gitbook build</code> ,生成的静态网页默认保存位置在<code>./_book</code>目录下。
-    3. 需要明白<code>Github Pages</code> 概念。具体地简单阅读此链接便可明白：<a href="https://help.github.com/articles/configuring-a-publishing-source-for-github-pages/">https://help.github.com/articles/configuring-a-publishing-source-for-github-pages/</a></p>
-
-<p><strong>方法原理：</strong></p>
-
-<p>在GitHub上新建一个项目，该项目将会具有两个分支
-   - master分支： 用来保存Gitbook的源文件
-   - gh-pages 分支：用来保存生成的静态网页
-   - 设置gh-pages 分支为 GitHub Pages site</p>
-
-<p>具体步骤：
-1. 在GitHub 新建一个仓库，名字就是访问域名中的{gitbook_repository}字段，本例中使用example-book 作为仓库名进行说明。</p>
-
-<ol>
->>>>>>> 1f2fe96fca4549cf59cb2785784235ea96f06906
 <li><p>将该仓库复制到本地（git clone example-book)</p>
 
 <ul>
@@ -336,19 +313,10 @@
 
 <li><p>清空分支gh-pages 的内容 (git rm -&gt;git add -&gt;git commit -&gt;git push)</p></li>
 
-<<<<<<< HEAD
 <li><p>在一个新的目录复制远程仓库的gh-pages 分支并保存为 book-build</p>
 
 <p><code>git clone -b gh-pages git@github.com:{USERNAME}/example-book.git     book-build</code></p></li>
 
-=======
-<li><p>在一个新的目录复制远程仓库的gh-pages 分支并保存为 book-build</p></li>
-</ol>
-
-<p><code>git clone -b gh-pages git@github.com:{USERNAME}/example-book.git book-build</code></p>
-
-<ol>
->>>>>>> 1f2fe96fca4549cf59cb2785784235ea96f06906
 <li><p>在本地切回master分之后, 在主分支上编写gitbook 的源码</p></li>
 
 <li><p>使用<code>gitbook serve</code> 命令后，可以使用localhost:4000 查看生成的book</p></li>
@@ -392,11 +360,7 @@
                 <section id="datecount">
                     <h4 id="date"> Tue May 15, 2018</h4>
                 </section>
-<<<<<<< HEAD
                 <h5 id="wc">1000 Words|Read in about 2 Min</h5>
-=======
-                <h5 id="wc">1100 Words|Read in about 3 Min</h5>
->>>>>>> 1f2fe96fca4549cf59cb2785784235ea96f06906
                 <h5 id="tags">Tags: 
                     <a href="https://rootdeep.github.io//tags/gitbook-github">gitbook, github</a> &nbsp;
                 </h5>
