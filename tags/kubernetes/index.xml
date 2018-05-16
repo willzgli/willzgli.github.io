@@ -8,10 +8,19 @@
     <language>zh-cn</language>
     <managingEditor>zhiguo.lee@foxmail.com</managingEditor>
     <webMaster>zhiguo.lee@foxmail.com</webMaster>
-    <lastBuildDate>Thu, 01 Jun 2017 20:18:57 +0800</lastBuildDate>
+    <lastBuildDate>Wed, 16 May 2018 10:22:57 +0800</lastBuildDate>
     
 	<atom:link href="https://rootdeep.github.io/tags/kubernetes/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>etcd member 冲突的临时解决方法</title>
+      <link>https://rootdeep.github.io/post/fix-stale-node-in-etcd-cluster/</link>
+      <pubDate>Wed, 16 May 2018 10:22:57 +0800</pubDate>
+      <author>zhiguo.lee@foxmail.com</author>
+      <guid>https://rootdeep.github.io/post/fix-stale-node-in-etcd-cluster/</guid>
+      <description>近日，搭建了一个etcd 集群，在关闭了集群的一个节点之后，又重新创建了一个新的节点，并且新的节点依旧用原来的IP，但是在新的节点上启动etc</description>
+    </item>
     
     <item>
       <title>K8s 卷管理源码分析（一）</title>

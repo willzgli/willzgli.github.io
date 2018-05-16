@@ -5,19 +5,22 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
 
-  <title> Github - </title>
+  <title> etcd member 冲突的临时解决方法 - </title>
   <meta name="description" content="" />
-  <meta property="og:title" content="Github" />
-  <meta name="twitter:title" content="Github" />
+  <meta property="og:title" content="etcd member 冲突的临时解决方法" />
+  <meta name="twitter:title" content="etcd member 冲突的临时解决方法" />
+  <meta name="description" content="近日，搭建了一个etcd 集群，在关闭了集群的一个节点之后，又重新创建了一个新的节点，并且新的节点依旧用原来的IP，但是在新的节点上启动etc">
+  <meta property="og:description" content="近日，搭建了一个etcd 集群，在关闭了集群的一个节点之后，又重新创建了一个新的节点，并且新的节点依旧用原来的IP，但是在新的节点上启动etc">
+  <meta name="twitter:description" content="近日，搭建了一个etcd 集群，在关闭了集群的一个节点之后，又重新创建了一个新的节点，并且新的节点依旧用原来的IP，但是在新的节点上启动etc">
   <meta property="og:image" content="https://rootdeep.github.io/rootdeep.jpg" />
   <meta name="twitter:image" content="https://rootdeep.github.io/rootdeep.jpg" />
   <meta name="twitter:card" content="summary" />
-  <meta property="og:url" content="https://rootdeep.github.io/categories/github/" />
+  <meta property="og:url" content="https://rootdeep.github.io/post/fix-stale-node-in-etcd-cluster/" />
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="RootDeep" />
 
   <meta name="generator" content="Hugo 0.37" />
-  <link rel="canonical" href="https://rootdeep.github.io/categories/github/" />
+  <link rel="canonical" href="https://rootdeep.github.io/post/fix-stale-node-in-etcd-cluster/" />
   <link rel="alternate" href="https://rootdeep.github.io/index.xml" type="application/rss+xml" title="RootDeep">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.7.1/katex.min.css" integrity="sha384-wITovz90syo1dJWVh32uuETPVEtGigN07tkttEqPv+uR2SE/mbQcG7ATL28aI9H0" crossorigin="anonymous">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
@@ -223,60 +226,182 @@
 
 
     
+  
+  
+  
+
+
+
+
+  
+
   <header class="header-section ">
+    
     <div class="intro-header no-img">
+      
+	  
       <div class="container">
         <div class="row">
+            
           <div class="col-lg-12 col-md-12 col-md-offset-0">
-            <div class="page-heading">
-              
-
-            </div>			
+            <div class="post-heading">
+			     
+                     <h1  align="center">etcd member 冲突的临时解决方法</h1>
+                           	
+                
+            </div>
           </div>
         </div>
       </div>
     </div>
   </header>
 
+
     
-  <div class="container" role="main">
+<div class="container" role="main">
     <div class="row">
-      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-        
-        <div class="posts-list">
-          
-            <article class="post-preview">
-              <a href="https://rootdeep.github.io/post/show-gitbook-with-github/">
-                <h2 class="post-title">发布Gitbook至GitHub个人主页</h2>
+        <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+            
+            <div>
+                <section id="datecount">
+                    <h4 id="date"> Wed May 16, 2018</h4>
+                </section>
+                <h5 id="wc">600 Words|Read in about 2 Min</h5>
+                <h5 id="tags">Tags: 
+                    <a href="https://rootdeep.github.io//tags/kubernetes">kubernetes</a> &nbsp;
+                    <a href="https://rootdeep.github.io//tags/etcd">etcd</a> &nbsp;
+                </h5>
 
-                
-              </a>
+            </div>
+            <article role="main" class="blog-post">
+                <p>近日，搭建了一个etcd 集群，在关闭了集群的一个节点之后，又重新创建了一个新的节点，并且新的节点依旧用原来的IP，但是在新的节点上启动etcd 服务的时候，发现服务起不来。查看日志，主要问题输出如下：</p>
 
-              <p class="post-meta">
-                Posted on May 15, 2018
-              </p>
-              <div class="post-entry">
-                
-                  这里不讲如何生成gitbook的html 静态网页，跳过这一步，从如何发布静态网页到GitHub的个人主页(http://{username}
-                  <a href="https://rootdeep.github.io/post/show-gitbook-with-github/" class="post-read-more">[Read More]</a>
-                
-              </div>
+<p><img src="/etcd-member-conflict.png" alt="etcd-member-conflict" /></p>
 
-              
-                <span class="post-meta">
-                  
-                    #<a href="https://rootdeep.github.io/tags/gitbook-github/">gitbook, github</a>&nbsp;
-                  
-                </span>
-              
+<p>看红色字体的提示，就是该IP 已经作为member 注册到 etcd discovery 服务中,但是本次该节点etcd 服务启动时，又没有在etcd 服务的数据目录找到集群信息。</p>
+
+<pre><code>member &quot;10.0.10.15&quot; has previously registered with discovery service token (http://10.127.3.110:8087/7477520eb71e7c
+Mar 23 05:23:09 yangle-test2-4y5uiiqiz42g-master-0.novalocal etcd[16227]: But etcd could not find valid cluster configuration in the given data dir (/var/lib/etcd/default.etcd).
+
+</code></pre>
+
+<p><strong>解决办法：</strong></p>
+
+<ol>
+<li><p>停止集群上所有节点的etcd 服务， 删除冲突节点上保存在${ETCD_DATA_DIR} 的数据</p></li>
+
+<li><p>在discovery 服务中删除冲突节点的信息。</p>
+
+<p>例如，在我的集群是采用私有的discovery 服务，discovery  url  是 : <code>http://10.127.3.110:8087/7477520eb71e7ca7dbcb2709227453e4</code></p>
+
+<p>删除冲突节点信息的具体解决过程是：</p>
+
+<ul>
+<li><p>先向该集群的discovery 发送一个GET请求, 查看member 组成。</p>
+
+<p><code>curl -X GET   http://10.127.3.110:8087/7477520eb71e7ca7dbcb2709227453e4</code></p>
+
+<p>结果如下</p>
+
+<pre><code> {
+  &quot;action&quot;: &quot;get&quot;,
+  &quot;node&quot;: {
+     &quot;key&quot;: &quot;/_etcd/registry/7477520eb71e7ca7dbcb2709227453e4&quot;,
+     &quot;dir&quot;: true,
+     &quot;nodes&quot;: [
+        {
+         &quot;key&quot;: &quot;/_etcd/registry/7477520eb71e7ca7dbcb2709227453e4/d9e6048794a9ede3&quot;,
+          &quot;value&quot;: &quot;10.0.10.6=https://10.0.10.6:2380&quot;,
+          &quot;modifiedIndex&quot;: 64,
+          &quot;createdIndex&quot;: 64
+        },
+        {
+          &quot;key&quot;: &quot;/_etcd/registry/7477520eb71e7ca7dbcb2709227453e4/bf841c5ec1d7b7e1&quot;,
+           &quot;value&quot;: &quot;10.0.10.14=https://10.0.10.14:2380&quot;,
+           &quot;modifiedIndex&quot;: 65,
+           &quot;createdIndex&quot;: 65
+        },
+        {
+          &quot;key&quot;: &quot;/_etcd/registry/7477520eb71e7ca7dbcb2709227453e4/8eee5f45a2fedb94&quot;,
+          &quot;value&quot;: &quot;10.0.10.15=https://10.0.10.15:2380&quot;,
+          &quot;modifiedIndex&quot;: 66,
+          &quot;createdIndex&quot;: 66
+        }
+     ],
+     &quot;modifiedIndex&quot;: 62,
+     &quot;createdIndex&quot;: 62
+  }
+}
+</code></pre>
+
+<p>从结果中可以发现，IP 为10.0.10.15 的节点的key 为 8eee5f45a2fedb94。</p></li>
+
+<li><p>然后，向discovery 发送一个DELETE请求, 删除该节点member</p>
+
+<p><code>curl -X DELETE http://10.127.3.110:8087/7477520eb71e7ca7dbcb2709227453e4/8eee5f45a2fedb94</code></p></li>
+</ul></li>
+
+<li><p>在新的节点上（IP 仍是 10.0.10.15）及其他节点重启etcd 服务。</p></li>
+</ol>
 
             </article>
-          
+
+            <ul class="pager blog-pager">
+                
+                <li class="previous">
+                    <a href="https://rootdeep.github.io/post/show-gitbook-with-github/" data-toggle="tooltip" data-placement="top" title="发布Gitbook至GitHub个人主页">&larr; Previous Post</a>
+                </li>
+                 
+            </ul>
+            <div>
+                 
+                <h2>See Also</h2>
+                <ul>
+                    
+                    <li><a href="/post/first/">微服务管理框架service mesh——istio安装笔记</a></li>
+                    
+                    <li><a href="/post/volume-management-part1/">K8s 卷管理源码分析（一）</a></li>
+                    
+                </ul>
+                
+            </div>
+            
+            <div>
+                <section id="datecount">
+                    <h4 id="date"> Wed May 16, 2018</h4>
+                </section>
+                <h5 id="wc">600 Words|Read in about 2 Min</h5>
+                <h5 id="tags">Tags: 
+                    <a href="https://rootdeep.github.io//tags/kubernetes">kubernetes</a> &nbsp;
+                    <a href="https://rootdeep.github.io//tags/etcd">etcd</a> &nbsp;
+                </h5>
+            </div>
+            
+            <aside id=comments>
+                <div>
+                    <h2> Comments </h2>
+                </div>
+                <div id="container"></div>
+                <link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
+                <script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+                <script>
+                    var gitment = new Gitment({
+					    id: "etcd member 冲突的临时解决方法",
+                        owner: 'rootdeep', 
+                        repo: 'rootdeep.github.io', 
+                        oauth: {
+                            client_id: 'a45f8ab669362a110f83',
+                            client_secret: '925eb6e429ff5eb575823cd6a7e193dcad2a61f4',
+                        },
+                    })
+                    gitment.render('container')
+                </script>
+            </aside>
+
         </div>
-        
-      </div>
     </div>
-  </div>
+    </section>
+</div>
 
     <footer>
   <div class="container">
