@@ -33,6 +33,11 @@
   </url>
   
   <url>
+    <loc>https://rootdeep.github.io/post/openstack-api-microversion/</loc>
+    <lastmod>2017-09-21T14:03:57+08:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://rootdeep.github.io/post/volume-management-part1/</loc>
     <lastmod>2017-06-01T20:18:57+08:00</lastmod>
   </url>
@@ -79,13 +84,13 @@
   </url>
   
   <url>
-    <loc>https://rootdeep.github.io/tags/kubernetes/</loc>
+    <loc>https://rootdeep.github.io/categories/kubernetes/</loc>
     <lastmod>2018-05-16T14:03:57+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://rootdeep.github.io/categories/kubernetes/</loc>
+    <loc>https://rootdeep.github.io/tags/kubernetes/</loc>
     <lastmod>2018-05-16T14:03:57+08:00</lastmod>
     <priority>0</priority>
   </url>
@@ -103,8 +108,26 @@
   </url>
   
   <url>
+    <loc>https://rootdeep.github.io/tags/manila/</loc>
+    <lastmod>2017-09-21T14:03:57+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://rootdeep.github.io/tags/microversion/</loc>
+    <lastmod>2017-09-21T14:03:57+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>https://rootdeep.github.io/categories/openstack/</loc>
     <lastmod>2018-05-16T10:22:57+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://rootdeep.github.io/tags/openstack/</loc>
+    <lastmod>2017-09-21T14:03:57+08:00</lastmod>
     <priority>0</priority>
   </url>
   

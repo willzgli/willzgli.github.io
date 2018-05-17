@@ -5,22 +5,19 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
 
-  <title> helm 自带私有仓库使用方法 - </title>
+  <title> Manila - </title>
   <meta name="description" content="" />
-  <meta property="og:title" content="helm 自带私有仓库使用方法" />
-  <meta name="twitter:title" content="helm 自带私有仓库使用方法" />
-  <meta name="description" content="安装helm 客户端后，使用 helm serve 命令可以在本地启动一个私有仓库。 通过helm repo list 可以看到一个仓库名，及仓库地址为: local http://127.0.0.1/charts helm serve 的启动命令参数如下：">
-  <meta property="og:description" content="安装helm 客户端后，使用 helm serve 命令可以在本地启动一个私有仓库。 通过helm repo list 可以看到一个仓库名，及仓库地址为: local http://127.0.0.1/charts helm serve 的启动命令参数如下：">
-  <meta name="twitter:description" content="安装helm 客户端后，使用 helm serve 命令可以在本地启动一个私有仓库。 通过helm repo list 可以看到一个仓库名，及仓库地址为: local http://127.0.0.1/charts helm serve 的启动命令参数如下：">
+  <meta property="og:title" content="Manila" />
+  <meta name="twitter:title" content="Manila" />
   <meta property="og:image" content="https://rootdeep.github.io/rootdeep.jpg" />
   <meta name="twitter:image" content="https://rootdeep.github.io/rootdeep.jpg" />
   <meta name="twitter:card" content="summary" />
-  <meta property="og:url" content="https://rootdeep.github.io/post/simple-operation-of-helm-repo/" />
+  <meta property="og:url" content="https://rootdeep.github.io/tags/manila/" />
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="RootDeep" />
 
   <meta name="generator" content="Hugo 0.37" />
-  <link rel="canonical" href="https://rootdeep.github.io/post/simple-operation-of-helm-repo/" />
+  <link rel="canonical" href="https://rootdeep.github.io/tags/manila/" />
   <link rel="alternate" href="https://rootdeep.github.io/index.xml" type="application/rss+xml" title="RootDeep">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.7.1/katex.min.css" integrity="sha384-wITovz90syo1dJWVh32uuETPVEtGigN07tkttEqPv+uR2SE/mbQcG7ATL28aI9H0" crossorigin="anonymous">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
@@ -182,176 +179,68 @@
 
 
     
-  
-  
-  
-
-
-
-
-  
-
   <header class="header-section ">
-    
     <div class="intro-header no-img">
-      
-	  
       <div class="container">
         <div class="row">
-            
           <div class="col-lg-12 col-md-12 col-md-offset-0">
-            <div class="post-heading">
-			     
-                     <h1  align="center">helm 自带私有仓库使用方法</h1>
-                           	
-                
-            </div>
+            <div class="page-heading">
+              
+
+            </div>			
           </div>
         </div>
       </div>
     </div>
   </header>
 
-
     
-<div class="container" role="main">
+  <div class="container" role="main">
     <div class="row">
-        <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-            
-            <div>
-                <section id="datecount">
-                    <h4 id="date"> Wed May 16, 2018</h4>
-                </section>
-                <h5 id="wc">900 Words|Read in about 2 Min</h5>
-                <h5 id="tags">Tags: 
-                    <a href="https://rootdeep.github.io//tags/kubernetes">kubernetes</a> &nbsp;
-                    <a href="https://rootdeep.github.io//tags/helm">helm</a> &nbsp;
-                </h5>
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        
+        <div class="posts-list">
+          
+            <article class="post-preview">
+              <a href="https://rootdeep.github.io/post/openstack-api-microversion/">
+                <h2 class="post-title">OpenStack 微版本实现原理</h2>
 
-            </div>
-            <article role="main" class="blog-post">
-                <p>安装helm 客户端后，使用 helm serve 命令可以在本地启动一个私有仓库。
-通过helm repo list 可以看到一个仓库名，及仓库地址为:</p>
+                
+                  <h3 class="post-subtitle">
+                    从Python代码的实现及调用分支角度分析
+                  </h3>
+                
+              </a>
 
-<p><code>local   http://127.0.0.1/charts</code></p>
+              <p class="post-meta">
+                Posted on September 21, 2017
+              </p>
+              <div class="post-entry">
+                
+                  在OpenStack Kilo 版本的Nova项目中，首次引入了 API Microversioning 的概念，随后各个项目遵循此设计，根据需求也引入了微版本功能。引入微版本主要目的就是
+                  <a href="https://rootdeep.github.io/post/openstack-api-microversion/" class="post-read-more">[Read More]</a>
+                
+              </div>
 
-<p>helm serve 的启动命令参数如下：</p>
-
-<pre><code>Usage:
-  helm serve [flags]
-
-Flags:
-      --address string     address to listen on (default &quot;127.0.0.1:8879&quot;)
-      --repo-path string   local directory path from which to serve charts
-      --url string         external URL of chart repository
-
-Global Flags:
-      --debug                           enable verbose output
-      --home string                     location of your Helm config. Overrides $HELM_HOME (default &quot;/root/.helm&quot;)
-      --host string                     address of Tiller. Overrides $HELM_HOST
-      --kube-context string             name of the kubeconfig context to use
-      --tiller-connection-timeout int   the duration (in seconds) Helm will wait to establish a connection to tiller (default 300)
-      --tiller-namespace string         namespace of Tiller (default &quot;kube-system&quot;)
-</code></pre>
-
-<p>一般的，如果不添加任何命令参数启动本地仓库，helm 会以<a href="http://localhost:8879">http://localhost:8879</a> 为服务地址，以~/.helm/repository/local 为本地仓库来保存chart模板。在使用&rdquo;helm serve&rdquo; 启动本地仓库时，会在~/.helm/repository/local 下生成一个index.yaml 文件。该文件记录了chart 模板的元数据，类似于yum 源repodata 目录下数据（或者apt 源的Package.gz 文件）。</p>
-
-<p>如果local 目录下没有chart 包，生成的index.yaml 的内容就是空的。所以，在启动本地服务仓库之前，可以把制作好的本地chart 压缩包（*.tgz）方法该目录下，这样生成的index.yaml 文件就有是内容的。</p>
-
-<p>使用localhost:8879 为服务地址时，只能在本地浏览器访问仓库。通过添加 helm serve 的启动参数，可以使其在机器的物理IP上工作，并且，也可以设置其他的仓库位置。例如使用/var/repo 作为仓库来保存模板可以按照以下步骤实现：</p>
-
-<pre><code>mkdir /var/repo
-# 复制chart包到 /var/repo 目录
-cp chart1.tzg  /var/repo
-helm serve --address IP:8879 --repo-path  /var/repo # 会生成index.yaml 文件
-</code></pre>
-
-<p>最后一步，添加本地仓库到helm 的仓库目录中</p>
-
-<p><code>helm repo add {repo_name}   http://IP:8879</code></p>
-
-<p>例如：</p>
-
-<pre><code>[root@lzg-02 ~]# helm repo add my_local  http://192.168.51.252:8879
-&quot;my_local&quot; has been added to your repositories
-</code></pre>
-
-<p>通过<code>helm repo list</code> 可以看到新加的仓库 及仓库地址。
-例如：</p>
-
-<pre><code>[root@lzg-02 ~]# helm repo list
-NAME        URL                                             
-stable      https://kubernetes-charts.storage.googleapis.com
-my_local    http://192.168.51.252:8879 
-</code></pre>
-
-<p>此外，如果先启动了本地仓库，再往仓库加镜像时，先把chart包复制到仓库目录下，再
-通过<code>helm repo index</code>命令重新生成index.yalm 文件。具体示例如下：</p>
-
-<p><code>helm repo index /var/repo --url http://192.168.51.252:8879</code></p>
-
-<p>通过浏览器访问 <a href="http://IP:8879">http://IP:8879</a> 可以看到新添加的chart 包。</p>
-
-<p>删除一个仓库： helm repo remove {repo_name}</p>
+              
+                <span class="post-meta">
+                  
+                    #<a href="https://rootdeep.github.io/tags/openstack/">OpenStack</a>&nbsp;
+                  
+                    #<a href="https://rootdeep.github.io/tags/microversion/">MicroVersion</a>&nbsp;
+                  
+                    #<a href="https://rootdeep.github.io/tags/manila/">Manila</a>&nbsp;
+                  
+                </span>
+              
 
             </article>
-
-            <ul class="pager blog-pager">
-                
-                <li class="previous">
-                    <a href="https://rootdeep.github.io/post/fix-stale-node-in-etcd-cluster/" data-toggle="tooltip" data-placement="top" title="etcd member 冲突的临时解决方法">&larr; Previous Post</a>
-                </li>
-                 
-            </ul>
-            <div>
-                 
-                <h2>See Also</h2>
-                <ul>
-                    
-                    <li><a href="/post/fix-stale-node-in-etcd-cluster/">etcd member 冲突的临时解决方法</a></li>
-                    
-                    <li><a href="/post/volume-management-part1/">K8s 卷管理源码分析（一）</a></li>
-                    
-                </ul>
-                
-            </div>
-            
-            <div>
-                <section id="datecount">
-                    <h4 id="date"> Wed May 16, 2018</h4>
-                </section>
-                <h5 id="wc">900 Words|Read in about 2 Min</h5>
-                <h5 id="tags">Tags: 
-                    <a href="https://rootdeep.github.io//tags/kubernetes">kubernetes</a> &nbsp;
-                    <a href="https://rootdeep.github.io//tags/helm">helm</a> &nbsp;
-                </h5>
-            </div>
-            
-            <aside id=comments>
-                <div>
-                    <h2> Comments </h2>
-                </div>
-                <div id="container"></div>
-                <link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
-                <script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
-                <script>
-                    var gitment = new Gitment({
-					    id: "helm 自带私有仓库使用方法",
-                        owner: 'rootdeep', 
-                        repo: 'rootdeep.github.io', 
-                        oauth: {
-                            client_id: 'a45f8ab669362a110f83',
-                            client_secret: '925eb6e429ff5eb575823cd6a7e193dcad2a61f4',
-                        },
-                    })
-                    gitment.render('container')
-                </script>
-            </aside>
-
+          
         </div>
+        
+      </div>
     </div>
-    </section>
-</div>
+  </div>
 
     <footer>
   <div class="container">
