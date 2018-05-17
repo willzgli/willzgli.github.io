@@ -8,7 +8,17 @@
   </url>
   
   <url>
+    <loc>https://rootdeep.github.io/post/simple-operation-of-helm-repo/</loc>
+    <lastmod>2018-05-16T14:03:57+08:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://rootdeep.github.io/post/fix-stale-node-in-etcd-cluster/</loc>
+    <lastmod>2018-05-16T10:22:57+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://rootdeep.github.io/post/create-vm-image-with-oz/</loc>
     <lastmod>2018-05-16T10:22:57+08:00</lastmod>
   </url>
   
@@ -18,23 +28,23 @@
   </url>
   
   <url>
+    <loc>https://rootdeep.github.io/post/cat-special-charactars-in-shell-to-file/</loc>
+    <lastmod>2018-04-20T20:18:57+08:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://rootdeep.github.io/post/volume-management-part1/</loc>
     <lastmod>2017-06-01T20:18:57+08:00</lastmod>
   </url>
   
   <url>
-    <loc>https://rootdeep.github.io/post/first/</loc>
-    <lastmod>2017-06-01T20:18:57+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://rootdeep.github.io/categories/</loc>
+    <loc>https://rootdeep.github.io/tags/cat/</loc>
+    <lastmod>2018-04-20T20:18:57+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://rootdeep.github.io/categories/cloud-native/</loc>
-    <lastmod>2017-06-01T20:18:57+08:00</lastmod>
+    <loc>https://rootdeep.github.io/categories/</loc>
     <priority>0</priority>
   </url>
   
@@ -57,26 +67,56 @@
   </url>
   
   <url>
-    <loc>https://rootdeep.github.io/tags/istio/</loc>
-    <lastmod>2017-06-01T20:18:57+08:00</lastmod>
+    <loc>https://rootdeep.github.io/tags/helm/</loc>
+    <lastmod>2018-05-16T14:03:57+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://rootdeep.github.io/tags/kubernetes/</loc>
+    <loc>https://rootdeep.github.io/tags/image/</loc>
     <lastmod>2018-05-16T10:22:57+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
+    <loc>https://rootdeep.github.io/tags/kubernetes/</loc>
+    <lastmod>2018-05-16T14:03:57+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>https://rootdeep.github.io/categories/kubernetes/</loc>
+    <lastmod>2018-05-16T14:03:57+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://rootdeep.github.io/tags/linux/</loc>
+    <lastmod>2018-04-20T20:18:57+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://rootdeep.github.io/categories/linux-practice/</loc>
+    <lastmod>2018-04-20T20:18:57+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://rootdeep.github.io/categories/openstack/</loc>
+    <lastmod>2018-05-16T10:22:57+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://rootdeep.github.io/tags/oz/</loc>
     <lastmod>2018-05-16T10:22:57+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://rootdeep.github.io/post/</loc>
-    <lastmod>2018-05-16T10:22:57+08:00</lastmod>
+    <lastmod>2018-05-16T14:03:57+08:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -87,13 +127,19 @@
   </url>
   
   <url>
-    <loc>https://rootdeep.github.io/tags/service-mesh/</loc>
-    <lastmod>2017-06-01T20:18:57+08:00</lastmod>
+    <loc>https://rootdeep.github.io/tags/shell-script/</loc>
+    <lastmod>2018-04-20T20:18:57+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://rootdeep.github.io/tags/</loc>
+    <lastmod>2018-04-20T20:18:57+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://rootdeep.github.io/tags/vm/</loc>
     <lastmod>2018-05-16T10:22:57+08:00</lastmod>
     <priority>0</priority>
   </url>
