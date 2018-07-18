@@ -5,9 +5,7 @@
     <link>https://rootdeep.github.io/categories/linux-practice/</link>
     <description>Recent content in Linux Practice on RootDeep</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>zh-cn</language>
-    <managingEditor>zhiguo.lee@foxmail.com</managingEditor>
-    <webMaster>zhiguo.lee@foxmail.com</webMaster>
+    <language>zh</language>
     <lastBuildDate>Fri, 20 Apr 2018 20:18:57 +0800</lastBuildDate>
     
 	<atom:link href="https://rootdeep.github.io/categories/linux-practice/index.xml" rel="self" type="application/rss+xml" />
@@ -15,10 +13,10 @@
     
     <item>
       <title>将shell 命令中特殊字符 cat 到文件的方法</title>
-      <link>https://rootdeep.github.io/post/cat-special-charactars-in-shell-to-file/</link>
+      <link>https://rootdeep.github.io/posts/cat-special-charactars-in-shell-to-file/</link>
       <pubDate>Fri, 20 Apr 2018 20:18:57 +0800</pubDate>
-      <author>zhiguo.lee@foxmail.com</author>
-      <guid>https://rootdeep.github.io/post/cat-special-charactars-in-shell-to-file/</guid>
+      
+      <guid>https://rootdeep.github.io/posts/cat-special-charactars-in-shell-to-file/</guid>
       <description>有时候，我们会通过cat 的方式在终端敲入多行shell 命令到一个文件中，其中会遇到诸如“ ` ” （ESC 下边的键）或者 “$” 这两个特殊的字符。把</description>
     </item>
     

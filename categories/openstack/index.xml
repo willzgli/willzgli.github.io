@@ -5,29 +5,45 @@
     <link>https://rootdeep.github.io/categories/openstack/</link>
     <description>Recent content in Openstack on RootDeep</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>zh-cn</language>
-    <managingEditor>zhiguo.lee@foxmail.com</managingEditor>
-    <webMaster>zhiguo.lee@foxmail.com</webMaster>
-    <lastBuildDate>Wed, 16 May 2018 10:22:57 +0800</lastBuildDate>
+    <language>zh</language>
+    <lastBuildDate>Sat, 23 Jun 2018 11:18:57 +0800</lastBuildDate>
     
 	<atom:link href="https://rootdeep.github.io/categories/openstack/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
+      <title>Rabbit Driver Connection 创建流程</title>
+      <link>https://rootdeep.github.io/posts/rpc-rabbit-con-in-oslo-messaging/</link>
+      <pubDate>Sat, 23 Jun 2018 11:18:57 +0800</pubDate>
+      
+      <guid>https://rootdeep.github.io/posts/rpc-rabbit-con-in-oslo-messaging/</guid>
+      <description>本节主要分析了RabbitDriver中Connection类的初始化过程中，一个TCP 连接过程中调用代码的流程。流程深入到了kombu 库的</description>
+    </item>
+    
+    <item>
+      <title>手动制作OpenStack 虚拟机镜像</title>
+      <link>https://rootdeep.github.io/posts/make-openstack-image-manully/</link>
+      <pubDate>Thu, 07 Jun 2018 19:05:57 +0800</pubDate>
+      
+      <guid>https://rootdeep.github.io/posts/make-openstack-image-manully/</guid>
+      <description>最近对制作OpenStack 虚拟机镜像起了兴趣，主要是因为自己在OpenStack集群上创建了一些虚拟机并安装了常用的软件，但是这个Open</description>
+    </item>
+    
+    <item>
       <title>使用Oz工具自动化虚拟机镜像</title>
-      <link>https://rootdeep.github.io/post/create-vm-image-with-oz/</link>
+      <link>https://rootdeep.github.io/posts/create-vm-image-with-oz/</link>
       <pubDate>Wed, 16 May 2018 10:22:57 +0800</pubDate>
-      <author>zhiguo.lee@foxmail.com</author>
-      <guid>https://rootdeep.github.io/post/create-vm-image-with-oz/</guid>
+      
+      <guid>https://rootdeep.github.io/posts/create-vm-image-with-oz/</guid>
       <description>Oz 简介 镜像制作一般分为手动制作和自动制作。 手动制作主要流程： 利用OS镜像启动一个虚拟机实例，启动镜像的工具包括virt-install、vi</description>
     </item>
     
     <item>
       <title>OpenStack 微版本实现原理</title>
-      <link>https://rootdeep.github.io/post/openstack-api-microversion/</link>
+      <link>https://rootdeep.github.io/posts/openstack-api-microversion/</link>
       <pubDate>Thu, 21 Sep 2017 14:03:57 +0800</pubDate>
-      <author>zhiguo.lee@foxmail.com</author>
-      <guid>https://rootdeep.github.io/post/openstack-api-microversion/</guid>
+      
+      <guid>https://rootdeep.github.io/posts/openstack-api-microversion/</guid>
       <description>在OpenStack Kilo 版本的Nova项目中，首次引入了 API Microversioning 的概念，随后各个项目遵循此设计，根据需求也引入了微版本功能。引入微版本主要目的就是</description>
     </item>
     

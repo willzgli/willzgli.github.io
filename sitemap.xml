@@ -8,37 +8,57 @@
   </url>
   
   <url>
-    <loc>https://rootdeep.github.io/post/simple-operation-of-helm-repo/</loc>
+    <loc>https://rootdeep.github.io/posts/rpc-rabbit-con-in-oslo-messaging/</loc>
+    <lastmod>2018-06-23T11:18:57+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://rootdeep.github.io/posts/rpc-call-procedure-in-oslo-messaging/</loc>
+    <lastmod>2018-06-21T09:18:57+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://rootdeep.github.io/posts/auto-scale-k8s-volume/</loc>
+    <lastmod>2018-06-15T20:18:57+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://rootdeep.github.io/posts/make-openstack-image-manully/</loc>
+    <lastmod>2018-06-07T19:05:57+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://rootdeep.github.io/posts/simple-operation-of-helm-repo/</loc>
     <lastmod>2018-05-16T14:03:57+08:00</lastmod>
   </url>
   
   <url>
-    <loc>https://rootdeep.github.io/post/fix-stale-node-in-etcd-cluster/</loc>
+    <loc>https://rootdeep.github.io/posts/fix-stale-node-in-etcd-cluster/</loc>
     <lastmod>2018-05-16T10:22:57+08:00</lastmod>
   </url>
   
   <url>
-    <loc>https://rootdeep.github.io/post/create-vm-image-with-oz/</loc>
+    <loc>https://rootdeep.github.io/posts/create-vm-image-with-oz/</loc>
     <lastmod>2018-05-16T10:22:57+08:00</lastmod>
   </url>
   
   <url>
-    <loc>https://rootdeep.github.io/post/show-gitbook-with-github/</loc>
+    <loc>https://rootdeep.github.io/posts/show-gitbook-with-github/</loc>
     <lastmod>2018-05-15T19:33:57+08:00</lastmod>
   </url>
   
   <url>
-    <loc>https://rootdeep.github.io/post/cat-special-charactars-in-shell-to-file/</loc>
+    <loc>https://rootdeep.github.io/posts/cat-special-charactars-in-shell-to-file/</loc>
     <lastmod>2018-04-20T20:18:57+08:00</lastmod>
   </url>
   
   <url>
-    <loc>https://rootdeep.github.io/post/openstack-api-microversion/</loc>
+    <loc>https://rootdeep.github.io/posts/openstack-api-microversion/</loc>
     <lastmod>2017-09-21T14:03:57+08:00</lastmod>
   </url>
   
   <url>
-    <loc>https://rootdeep.github.io/post/volume-management-part1/</loc>
+    <loc>https://rootdeep.github.io/posts/volume-management-part1/</loc>
     <lastmod>2017-06-01T20:18:57+08:00</lastmod>
   </url>
   
@@ -84,6 +104,12 @@
   </url>
   
   <url>
+    <loc>https://rootdeep.github.io/tags/k8s/</loc>
+    <lastmod>2018-06-15T20:18:57+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>https://rootdeep.github.io/tags/kubernetes/</loc>
     <lastmod>2018-05-16T14:03:57+08:00</lastmod>
     <priority>0</priority>
@@ -91,7 +117,7 @@
   
   <url>
     <loc>https://rootdeep.github.io/categories/kubernetes/</loc>
-    <lastmod>2018-05-16T14:03:57+08:00</lastmod>
+    <lastmod>2018-06-21T09:18:57+08:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -121,13 +147,25 @@
   
   <url>
     <loc>https://rootdeep.github.io/tags/openstack/</loc>
-    <lastmod>2017-09-21T14:03:57+08:00</lastmod>
+    <lastmod>2018-06-23T11:18:57+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://rootdeep.github.io/categories/openstack/</loc>
-    <lastmod>2018-05-16T10:22:57+08:00</lastmod>
+    <lastmod>2018-06-23T11:18:57+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://rootdeep.github.io/tags/openstack-image/</loc>
+    <lastmod>2018-06-07T19:05:57+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://rootdeep.github.io/tags/oslo.messaging/</loc>
+    <lastmod>2018-06-23T11:18:57+08:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -138,8 +176,20 @@
   </url>
   
   <url>
-    <loc>https://rootdeep.github.io/post/</loc>
-    <lastmod>2018-05-16T14:03:57+08:00</lastmod>
+    <loc>https://rootdeep.github.io/posts/</loc>
+    <lastmod>2018-06-23T11:18:57+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://rootdeep.github.io/tags/rabbitmq/</loc>
+    <lastmod>2018-06-23T11:18:57+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://rootdeep.github.io/tags/resize/</loc>
+    <lastmod>2018-06-15T20:18:57+08:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -164,6 +214,12 @@
   <url>
     <loc>https://rootdeep.github.io/tags/vm/</loc>
     <lastmod>2018-05-16T10:22:57+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://rootdeep.github.io/tags/volume/</loc>
+    <lastmod>2018-06-15T20:18:57+08:00</lastmod>
     <priority>0</priority>
   </url>
   
