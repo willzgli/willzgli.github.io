@@ -5,9 +5,7 @@
     <link>https://rootdeep.github.io/tags/</link>
     <description>Recent content in Tags on RootDeep</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>zh-cn</language>
-    <managingEditor>zhiguo.lee@foxmail.com</managingEditor>
-    <webMaster>zhiguo.lee@foxmail.com</webMaster>
+    <language>zh</language>
     <lastBuildDate>Fri, 20 Apr 2018 20:18:57 +0800</lastBuildDate>
     
 	<atom:link href="https://rootdeep.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
@@ -17,7 +15,7 @@
       <title>Cat</title>
       <link>https://rootdeep.github.io/tags/cat/</link>
       <pubDate>Fri, 20 Apr 2018 20:18:57 +0800</pubDate>
-      <author>zhiguo.lee@foxmail.com</author>
+      
       <guid>https://rootdeep.github.io/tags/cat/</guid>
       <description></description>
     </item>
@@ -26,7 +24,7 @@
       <title>Etcd</title>
       <link>https://rootdeep.github.io/tags/etcd/</link>
       <pubDate>Wed, 16 May 2018 10:22:57 +0800</pubDate>
-      <author>zhiguo.lee@foxmail.com</author>
+      
       <guid>https://rootdeep.github.io/tags/etcd/</guid>
       <description></description>
     </item>
@@ -35,7 +33,7 @@
       <title>Gitbook Github</title>
       <link>https://rootdeep.github.io/tags/gitbook-github/</link>
       <pubDate>Tue, 15 May 2018 19:33:57 +0800</pubDate>
-      <author>zhiguo.lee@foxmail.com</author>
+      
       <guid>https://rootdeep.github.io/tags/gitbook-github/</guid>
       <description></description>
     </item>
@@ -44,7 +42,7 @@
       <title>Helm</title>
       <link>https://rootdeep.github.io/tags/helm/</link>
       <pubDate>Wed, 16 May 2018 14:03:57 +0800</pubDate>
-      <author>zhiguo.lee@foxmail.com</author>
+      
       <guid>https://rootdeep.github.io/tags/helm/</guid>
       <description></description>
     </item>
@@ -53,8 +51,17 @@
       <title>Image</title>
       <link>https://rootdeep.github.io/tags/image/</link>
       <pubDate>Wed, 16 May 2018 10:22:57 +0800</pubDate>
-      <author>zhiguo.lee@foxmail.com</author>
+      
       <guid>https://rootdeep.github.io/tags/image/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>K8s</title>
+      <link>https://rootdeep.github.io/tags/k8s/</link>
+      <pubDate>Fri, 15 Jun 2018 20:18:57 +0800</pubDate>
+      
+      <guid>https://rootdeep.github.io/tags/k8s/</guid>
       <description></description>
     </item>
     
@@ -62,7 +69,7 @@
       <title>Kubernetes</title>
       <link>https://rootdeep.github.io/tags/kubernetes/</link>
       <pubDate>Wed, 16 May 2018 14:03:57 +0800</pubDate>
-      <author>zhiguo.lee@foxmail.com</author>
+      
       <guid>https://rootdeep.github.io/tags/kubernetes/</guid>
       <description></description>
     </item>
@@ -71,7 +78,7 @@
       <title>Linux</title>
       <link>https://rootdeep.github.io/tags/linux/</link>
       <pubDate>Fri, 20 Apr 2018 20:18:57 +0800</pubDate>
-      <author>zhiguo.lee@foxmail.com</author>
+      
       <guid>https://rootdeep.github.io/tags/linux/</guid>
       <description></description>
     </item>
@@ -80,7 +87,7 @@
       <title>Manila</title>
       <link>https://rootdeep.github.io/tags/manila/</link>
       <pubDate>Thu, 21 Sep 2017 14:03:57 +0800</pubDate>
-      <author>zhiguo.lee@foxmail.com</author>
+      
       <guid>https://rootdeep.github.io/tags/manila/</guid>
       <description></description>
     </item>
@@ -89,7 +96,7 @@
       <title>Microversion</title>
       <link>https://rootdeep.github.io/tags/microversion/</link>
       <pubDate>Thu, 21 Sep 2017 14:03:57 +0800</pubDate>
-      <author>zhiguo.lee@foxmail.com</author>
+      
       <guid>https://rootdeep.github.io/tags/microversion/</guid>
       <description></description>
     </item>
@@ -97,9 +104,27 @@
     <item>
       <title>Openstack</title>
       <link>https://rootdeep.github.io/tags/openstack/</link>
-      <pubDate>Thu, 21 Sep 2017 14:03:57 +0800</pubDate>
-      <author>zhiguo.lee@foxmail.com</author>
+      <pubDate>Sat, 23 Jun 2018 11:18:57 +0800</pubDate>
+      
       <guid>https://rootdeep.github.io/tags/openstack/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Openstack Image</title>
+      <link>https://rootdeep.github.io/tags/openstack-image/</link>
+      <pubDate>Thu, 07 Jun 2018 19:05:57 +0800</pubDate>
+      
+      <guid>https://rootdeep.github.io/tags/openstack-image/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Oslo.messaging</title>
+      <link>https://rootdeep.github.io/tags/oslo.messaging/</link>
+      <pubDate>Sat, 23 Jun 2018 11:18:57 +0800</pubDate>
+      
+      <guid>https://rootdeep.github.io/tags/oslo.messaging/</guid>
       <description></description>
     </item>
     
@@ -107,8 +132,26 @@
       <title>Oz</title>
       <link>https://rootdeep.github.io/tags/oz/</link>
       <pubDate>Wed, 16 May 2018 10:22:57 +0800</pubDate>
-      <author>zhiguo.lee@foxmail.com</author>
+      
       <guid>https://rootdeep.github.io/tags/oz/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Rabbitmq</title>
+      <link>https://rootdeep.github.io/tags/rabbitmq/</link>
+      <pubDate>Sat, 23 Jun 2018 11:18:57 +0800</pubDate>
+      
+      <guid>https://rootdeep.github.io/tags/rabbitmq/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Resize</title>
+      <link>https://rootdeep.github.io/tags/resize/</link>
+      <pubDate>Fri, 15 Jun 2018 20:18:57 +0800</pubDate>
+      
+      <guid>https://rootdeep.github.io/tags/resize/</guid>
       <description></description>
     </item>
     
@@ -116,7 +159,7 @@
       <title>Shell Script</title>
       <link>https://rootdeep.github.io/tags/shell-script/</link>
       <pubDate>Fri, 20 Apr 2018 20:18:57 +0800</pubDate>
-      <author>zhiguo.lee@foxmail.com</author>
+      
       <guid>https://rootdeep.github.io/tags/shell-script/</guid>
       <description></description>
     </item>
@@ -125,8 +168,17 @@
       <title>Vm</title>
       <link>https://rootdeep.github.io/tags/vm/</link>
       <pubDate>Wed, 16 May 2018 10:22:57 +0800</pubDate>
-      <author>zhiguo.lee@foxmail.com</author>
+      
       <guid>https://rootdeep.github.io/tags/vm/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Volume</title>
+      <link>https://rootdeep.github.io/tags/volume/</link>
+      <pubDate>Fri, 15 Jun 2018 20:18:57 +0800</pubDate>
+      
+      <guid>https://rootdeep.github.io/tags/volume/</guid>
       <description></description>
     </item>
     

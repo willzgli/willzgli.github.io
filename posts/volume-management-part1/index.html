@@ -1,0 +1,921 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
+  <title> K8s 卷管理源码分析（一） - </title>
+  <meta name="description" content="" />
+  <meta property="og:title" content="K8s 卷管理源码分析（一）" />
+  <meta name="twitter:title" content="K8s 卷管理源码分析（一）" />
+  <meta name="description" content="各组件功能： Volume Plugins 存储提供的扩展接口, 包含了各类存储提供者的plugin实现。 实现自定义的Plugins 可以通过FlexVolume(K8s 1">
+  <meta property="og:description" content="各组件功能： Volume Plugins 存储提供的扩展接口, 包含了各类存储提供者的plugin实现。 实现自定义的Plugins 可以通过FlexVolume(K8s 1">
+  <meta name="twitter:description" content="各组件功能： Volume Plugins 存储提供的扩展接口, 包含了各类存储提供者的plugin实现。 实现自定义的Plugins 可以通过FlexVolume(K8s 1">
+  <meta name="author" content="Zhiguo Li"/>
+  <meta property="og:image" content="https://rootdeep.github.io/rootdeep.jpg" />
+  <meta name="twitter:image" content="https://rootdeep.github.io/rootdeep.jpg" />
+  <meta name="twitter:card" content="summary" />
+  <meta property="og:url" content="https://rootdeep.github.io/posts/volume-management-part1/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="RootDeep" />
+
+  <meta name="generator" content="Hugo 0.37" />
+  <link rel="canonical" href="https://rootdeep.github.io/posts/volume-management-part1/" />
+  <link rel="alternate" href="https://rootdeep.github.io/index.xml" type="application/rss+xml" title="RootDeep">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.7.1/katex.min.css" integrity="sha384-wITovz90syo1dJWVh32uuETPVEtGigN07tkttEqPv+uR2SE/mbQcG7ATL28aI9H0" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://rootdeep.github.io/css/main.css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" />
+  
+
+<meta name="baidu-site-verification" content="g8IYR9SNLF" />
+<script>
+    var _hmt = _hmt || [];
+    (function() {
+    var hm = document.createElement("script");
+    hm.src = "https://hm.baidu.com/hm.js?11f7d254cfa4e0ca44b175c66d379ecc";
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+
+<link rel="stylesheet" href="https://rootdeep.github.io/css/prism.css" />
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.1/photoswipe.min.css" integrity="sha256-sCl5PUOGMLfFYctzDW3MtRib0ctyUvI9Qsmq2wXOeBY=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.1/default-skin/default-skin.min.css" integrity="sha256-BFeI1V+Vh1Rk37wswuOYn5lsTcaU96hGaI7OUVCLjPc=" crossorigin="anonymous" />
+
+
+
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+<div class="pswp__bg"></div>
+
+<div class="pswp__scroll-wrap">
+    
+    <div class="pswp__container">
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+    </div>
+    
+    <div class="pswp__ui pswp__ui--hidden">
+    <div class="pswp__top-bar">
+      
+      <div class="pswp__counter"></div>
+      <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+      <button class="pswp__button pswp__button--share" title="Share"></button>
+      <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+      <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+      
+      
+      <div class="pswp__preloader">
+        <div class="pswp__preloader__icn">
+          <div class="pswp__preloader__cut">
+            <div class="pswp__preloader__donut"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+      <div class="pswp__share-tooltip"></div>
+    </div>
+    <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+    </button>
+    <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+    </button>
+    <div class="pswp__caption">
+      <div class="pswp__caption__center"></div>
+    </div>
+    </div>
+    </div>
+</div>
+
+</head>
+
+  <body>
+    <nav class="navbar navbar-default navbar-fixed-top navbar-custom">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#main-navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="https://rootdeep.github.io/">RootDeep</a>
+    </div>
+
+    <div class="collapse navbar-collapse" id="main-navbar">
+      <ul class="nav navbar-nav navbar-right">
+        
+          
+            <li>
+              <a title="Home" href="/">Home</a>
+            </li>
+          
+        
+          
+            <li class="navlinks-container">
+              <a class="navlinks-parent" href="javascript:void(0)">Categories</a>
+              <div class="navlinks-children">
+                
+                  <a href="/categories/kubernetes">kubernetes</a>
+                
+                  <a href="/categories/linux-practice">Linux Practice</a>
+                
+                  <a href="/categories/openstack">OpenStack</a>
+                
+                  <a href="/categories/github">Github</a>
+                
+                  <a href="/categories/devops">Devops</a>
+                
+              </div>
+            </li>
+          
+        
+          
+            <li class="navlinks-container">
+              <a class="navlinks-parent" href="javascript:void(0)">Gitbooks</a>
+              <div class="navlinks-children">
+                
+                  <a href="/k8s-source-code-analysis">k8s sourcecode analysis</a>
+                
+                  <a href="/docker-handbook">Docker handbook</a>
+                
+                  <a href="/simple-operation-of-oz-tool">Oz Tool</a>
+                
+              </div>
+            </li>
+          
+        
+          
+            <li>
+              <a title="About" href="/about">About</a>
+            </li>
+          
+        
+
+        
+
+        
+      </ul>
+    </div>
+
+    <div class="avatar-container">
+      <div class="avatar-img-border">
+        
+          <a title="RootDeep" href="https://rootdeep.github.io/">
+            <img class="avatar-img" src="https://rootdeep.github.io/rootdeep.jpg" alt="RootDeep" />
+          </a>
+        
+      </div>
+    </div>
+
+  </div>
+</nav>
+
+
+
+
+    
+  
+  
+  
+
+
+
+
+  
+
+  <header class="header-section ">
+    
+    <div class="intro-header no-img">
+      
+      <div class="container">
+        <div class="row">
+            
+          <div class="col-lg-12 col-md-12 col-md-offset-0">
+            <div class="posts-heading">
+                <h1 align="center">K8s 卷管理源码分析（一）</h1>
+                
+                
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+
+    
+<div class="container" role="main" itemscope itemtype="http://schema.org/Article">
+    <div class="row">
+        <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+            
+            
+            
+<div>
+    <section id="datecount">
+        <h4 id="date"> Thu Jun 1, 2017</h4>
+    </section>
+    <h5 id="wc">5300 Words|Read in about 11 Min</h5>
+    <h5 id="tags">Tags: 
+        
+        <a href="https://rootdeep.github.io/tags/kubernetes/">kubernetes</a> &nbsp;
+    </h5>
+</div>
+
+            
+            <article role="main" class="blog-post" itemprop="articleBody" id="content">
+                
+<aside class="toc">
+  
+</aside>
+
+
+                <p><img src="/node-function.png" alt="node-function" /></p>
+
+<p>各组件功能：</p>
+
+<ul>
+<li>Volume Plugins
+
+<ul>
+<li>存储提供的扩展接口, 包含了各类存储提供者的plugin实现。</li>
+<li>实现自定义的Plugins 可以通过FlexVolume(K8s 1.8版本，目前算是过度方案)</li>
+<li>容器存储接口 CSI（Container Storage Interface，k8s1.9 实现了alpha 版本）。</li>
+<li>支持这套标准以后，K8S和存储提供者之间将彻底解耦，这一功能让新的卷插件的安装像部署Pod 一样简单，第三方存储开发的代码也不需要加入核心的Kubernetes代码中。</li>
+</ul></li>
+<li>Volume Manager
+
+<ul>
+<li>运行在kubelet 里让存储Ready的部件，主要是mount/unmount（attach/detach可选）</li>
+<li>pod调度到这个node上后才会有卷的相应操作，所以它的触发端是kubelet（严格讲是kubelet里的pod manager），根据Pod Manager里pod spec里申明的存储来触发卷的挂载操作</li>
+<li>Kubelet会监听到调度到该节点上的pod声明，会把pod缓存到Pod Manager中，VolumeManager通过Pod Manager获取PV/PVC的状态，并进行分析出具体的attach/detach、mount/umount, 操作然后调用plugin进行相应的业务处理</li>
+</ul></li>
+<li>PV/PVC Controller
+
+<ul>
+<li>运行在Master上的部件，主要做provision/delete</li>
+<li>PV Controller和K8S其它组件一样监听API Server中的资源更新，对于卷管理主要是监听PV，PVC， SC三类资源，当监听到这些资源的创建、删除、修改时，PV Controller经过判断是需要做创建、删除、绑定、回收等动作。</li>
+</ul></li>
+<li>Attach/Detach Controller
+
+<ul>
+<li>运行在Master上，主要做一些块设备（block device）的attach/detach（eg:rbd,cinder块设备需要在mount之前先attach 到主机上）</li>
+<li>非必须controller: 为了在attach卷上支持plugin headless形态，Controller Manager提供配置可以禁用。</li>
+<li><em>它的核心职责就是当API Server中，有卷声明的pod与node间的关系发生变化时，需要决定是通过调用存储插件将这个pod关联的卷attach到对应node的主机（或者虚拟机）上，还是将卷从node上detach掉. 操作完成后，通知其它关联组件（这里主要是kubelet）做相应的业务操作</em></li>
+</ul></li>
+</ul>
+
+<p>卷的完整挂载流程如下：</p>
+
+<ul>
+<li>用户创建Pod包含一个PVC</li>
+<li>Pod被分配到节点NodeA</li>
+<li>Kubelet等待Volume Manager准备设备</li>
+<li>PV controller调用相应Volume Plugin(in-tree或者out-of-tree)创建持久化卷并在系统中创建 PV对象以及其与PVC的绑定(Provision)</li>
+<li>Attach/Detach controller或者Volume Manager通过Volume Plugin实现块设备挂载(Attach)
+
+<ul>
+<li>Volume Manager等待设备挂载完成，将卷挂载到节点指定目录(mount)</li>
+<li>/var/lib/kubelet/plugins/kubernetes.io/aws-ebs/mounts/vol-xxxxxxxxxxxxxxxxx</li>
+<li>Kubelet在被告知设备准备好后启动Pod中的容器，利用Docker –v等参数将已经挂载到本地 的卷映射到容器中(volume mapping)</li>
+<li>​</li>
+</ul></li>
+</ul>
+
+<p>存储的提供者大致分为这么几类：</p>
+
+<ol>
+<li>持久化存储
+1.1. 公有云存储 — google， aws， azure， cinder
+1.2. 协议类存储 — iSCSI， NFS， FC …
+1.3. 系统类存储 — vSphere, ScaleIO, Ceph ….</li>
+<li>临时存储
+2.1. empty dir
+2.2. 向下接口类存储 — configmap, downwardAPI, secret</li>
+<li>其它
+3.1. 主机存储 — host path, local storage
+3.2. flex存储 — flex volume</li>
+</ol>
+
+<p>Attach/detach/ controller manager 流程 <a href="http://www.voidcn.com/article/p-kexnnnjb-bqo.html">http://www.voidcn.com/article/p-kexnnnjb-bqo.html</a></p>
+
+<ol>
+<li>初始化attach/detach controller</li>
+</ol>
+
+<p>卷管理任务由kube-controller 服务组件负责。在kube-controller 服务启动时，对attach/detach 管理器初始化。具体初始化过程代码调用关系如下：</p>
+
+<p>首先，在kube-controller-manager.go 中，通过main() 函数启动kube-controller 服务组件，main() 函数代码如下：</p>
+
+<p>kubernetes/cmd/kube-controller-manager/controller-manager.go</p>
+
+<pre><code>   func main(){
+      s := options.NewCMServer()
+      s.AddFlags(pflag.CommandLine, app.KnownControllers(),       
+                                                   app.ControllersDisabledByDefault.List())
+    
+      flag.InitFlags()
+      logs.InitLogs()
+      defer logs.FlushLogs()
+      verflag.PrintAndExitIfRequested()
+      if err := app.Run(s); err != nil {
+       fmt.Fprintf(os.Stderr, &quot;%v\n&quot;, err)
+       os.Exit(1)
+      }
+    }
+</code></pre>
+
+<pre><code>main() 函数中，主要的实现都在app.Run()方法中。以下是Run() 方法的实现
+</code></pre>
+
+<p>​</p>
+
+<p>cmd/kube-controller-manager/app/controllermanager.go</p>
+
+<pre><code>   func Run(s *options.CMServer) error {
+       ...
+    run := func(stop &lt;-chan struct{}) {
+        rootClientBuilder := controller.SimpleControllerClientBuilder{
+            ClientConfig: kubeconfig,
+        }
+       ...
+            clientBuilder = controller.SAControllerClientBuilder{
+                ClientConfig:         restclient.AnonymousClientConfig(kubeconfig),
+                CoreClient:           kubeClient.CoreV1(),
+                AuthenticationClient: kubeClient.Authentication(),
+                Namespace:            &quot;kube-system&quot;,
+            }
+        } 
+        ...
+        ctx, err := CreateControllerContext(s, rootClientBuilder, clientBuilder, stop)
+        if err != nil {
+            glog.Fatalf(&quot;error building controller context: %v&quot;, err)
+        }
+        saTokenControllerInitFunc := serviceAccountTokenControllerStarter{rootClientBuilder: rootClientBuilder}.startServiceAccountTokenController
+
+        if err := StartControllers(ctx, saTokenControllerInitFunc, NewControllerInitializers()); err != nil {
+            glog.Fatalf(&quot;error starting controllers: %v&quot;, err)
+        }
+
+    ...
+    }
+
+     ...
+   }
+</code></pre>
+
+<p>在Run() 方法中，通过调用StartControllers() 方法，实现了对卷管理及其他管理服务的初始化。在StartControllers()方法的参数中，controllers 参数实际接收的是NewControllerInitializers()方法的返回值， 该返回值为一个key-value 结构，返回值的 每个元素的value是初始化方法start* ，其中关于卷管理控制器的初始化方法为startAttachDetachController()。</p>
+
+<p>此外，在Run方法中，生成了ctx 变量</p>
+
+<p>​</p>
+
+<p>NewControllerInitializers() 的代码实现如下：</p>
+
+<p>​</p>
+
+<p>cmd/kube-controller-manager/app/controllermanager.go</p>
+
+<pre><code>   func NewControllerInitializers() map[string]InitFunc {
+    controllers := map[string]InitFunc{}
+    controllers[&quot;endpoint&quot;] = startEndpointController
+    controllers[&quot;replicationcontroller&quot;] = startReplicationController
+    controllers[&quot;podgc&quot;] = startPodGCController
+    controllers[&quot;resourcequota&quot;] = startResourceQuotaController
+    controllers[&quot;namespace&quot;] = startNamespaceController
+    controllers[&quot;serviceaccount&quot;] = startServiceAccountController
+    controllers[&quot;garbagecollector&quot;] = startGarbageCollectorController
+    controllers[&quot;daemonset&quot;] = startDaemonSetController
+    controllers[&quot;job&quot;] = startJobController
+    controllers[&quot;deployment&quot;] = startDeploymentController
+    controllers[&quot;replicaset&quot;] = startReplicaSetController
+    controllers[&quot;horizontalpodautoscaling&quot;] = startHPAController
+    controllers[&quot;disruption&quot;] = startDisruptionController
+    controllers[&quot;statefulset&quot;] = startStatefulSetController
+    controllers[&quot;cronjob&quot;] = startCronJobController
+    controllers[&quot;csrsigning&quot;] = startCSRSigningController
+    controllers[&quot;csrapproving&quot;] = startCSRApprovingController
+    controllers[&quot;csrcleaner&quot;] = startCSRCleanerController
+    controllers[&quot;ttl&quot;] = startTTLController
+    controllers[&quot;bootstrapsigner&quot;] = startBootstrapSignerController
+    controllers[&quot;tokencleaner&quot;] = startTokenCleanerController
+    controllers[&quot;service&quot;] = startServiceController
+    controllers[&quot;node&quot;] = startNodeController
+    controllers[&quot;route&quot;] = startRouteController
+    controllers[&quot;persistentvolume-binder&quot;] = startPersistentVolumeBinderController
+    controllers[&quot;attachdetach&quot;] = startAttachDetachController
+    controllers[&quot;persistentvolume-expander&quot;] = startVolumeExpandController
+
+    return controllers
+   }
+</code></pre>
+
+<p>再次返回到StartControllers()方法中，StartControllers() 代码的实现如下：
+   ​</p>
+
+<p>cmd/kube-controller-manager/app/controllermanager.go</p>
+
+<pre><code>   func StartControllers(ctx ControllerContext, startSATokenController InitFunc, controllers map[string]InitFunc) error {
+    ...
+    if _, err := startSATokenController(ctx); err != nil {
+        return err
+    }
+
+       ...
+    if ctx.Cloud != nil {
+        ctx.Cloud.Initialize(ctx.ClientBuilder)
+    }
+
+       ...
+    for controllerName, initFn := range controllers {
+       /* 是否需要初始化该controller */
+        if !ctx.IsControllerEnabled(controllerName) {
+            glog.Warningf(&quot;%q is disabled&quot;, controllerName)
+            continue
+        }
+
+        time.Sleep(wait.Jitter(ctx.Options.ControllerStartInterval.Duration, ControllerStartJitter))
+          started, err := initFn(ctx)  // 调用各个controller 的初始化方法start* 
+         ...
+    }
+
+    return nil
+   }
+</code></pre>
+
+<p>上面提到controllers 为一个key-value结构的变量， 在 StartControllers() 方法中，<code>range controllers</code>遍历controllers 中的每一个元素，initFn 为元素的value 值，实际上为一个初始化方法。 本文主要分析卷管理的实现，以下是卷管理controller 的初始化方法startAttachDetachController()，</p>
+
+<p>​</p>
+
+<p>cmd/kube-controller-manager/app/core.go</p>
+
+<pre><code>   func startAttachDetachController(ctx ControllerContext) (bool, error) {
+    if ctx.Options.ReconcilerSyncLoopPeriod.Duration &lt; time.Second {
+        return true, fmt.Errorf(&quot;Duration time must be greater than one second as set via command line option reconcile-sync-loop-period.&quot;)
+    }
+    attachDetachController, attachDetachControllerErr :=
+        attachdetach.func startAttachDetachController(ctx ControllerContext) (bool, error) {
+    if ctx.Options.ReconcilerSyncLoopPeriod.Duration &lt; time.Second {
+        return true, fmt.Errorf(&quot;Duration time must be greater than one second as set via command line option reconcile-sync-loop-period.&quot;)
+    }
+    attachDetachController, attachDetachControllerErr :=
+        attachdetach.NewAttachDetachController(
+            ctx.ClientBuilder.ClientOrDie(&quot;attachdetach-controller&quot;),
+            ctx.InformerFactory.Core().V1().Pods(),
+            ctx.InformerFactory.Core().V1().Nodes(),
+            ctx.InformerFactory.Core().V1().PersistentVolumeClaims(),
+            ctx.InformerFactory.Core().V1().PersistentVolumes(),
+            ctx.Cloud, //返回provider
+            /* 返回一个存储插件的列表，每个存储后端均实现了VolumePlugin 接口*/
+            ProbeAttachableVolumePlugins(),
+            GetDynamicPluginProber(ctx.Options.VolumeConfiguration),
+            ctx.Options.DisableAttachDetachReconcilerSync,
+            ctx.Options.ReconcilerSyncLoopPeriod.Duration,
+            attachdetach.DefaultTimerConfig,
+        )
+    if attachDetachControllerErr != nil {
+        return true, fmt.Errorf(&quot;failed to start attach/detach controller: %v&quot;, attachDetachControllerErr)
+    }
+     /*存储控制器的所有卷插件管理器初始化完成后，便开始循环检查请求*/
+    go attachDetachController.Run(ctx.Stop)  
+    return true, nil
+   }
+</code></pre>
+
+<p>在上面的方法中，调用了NewAttachDetachController() , 生成卷管理控制器<code>attachDetachController</code> , 该返回值是一个 attachDetachController 结构体引用。在NewAttachDetachController()  的参数传递中,调用了 ProbeAttachableVolumePlugins()方法，该方法的的返回值传递给plugins 参数。</p>
+
+<p><code>ProbeAttachableVolumePlugins()</code> 函数的实现如下：</p>
+
+<pre><code>   func ProbeAttachableVolumePlugins() []volume.VolumePlugin {
+    allPlugins := []volume.VolumePlugin{}
+
+    allPlugins = append(allPlugins, aws_ebs.ProbeVolumePlugins()...)
+    allPlugins = append(allPlugins, gce_pd.ProbeVolumePlugins()...)
+    allPlugins = append(allPlugins, cinder.ProbeVolumePlugins()...)
+    allPlugins = append(allPlugins, portworx.ProbeVolumePlugins()...)
+    allPlugins = append(allPlugins, vsphere_volume.ProbeVolumePlugins()...)
+    allPlugins = append(allPlugins, azure_dd.ProbeVolumePlugins()...)
+    allPlugins = append(allPlugins, photon_pd.ProbeVolumePlugins()...)
+    allPlugins = append(allPlugins, scaleio.ProbeVolumePlugins()...)
+    allPlugins = append(allPlugins, storageos.ProbeVolumePlugins()...)
+    allPlugins = append(allPlugins, fc.ProbeVolumePlugins()...)
+    allPlugins = append(allPlugins, iscsi.ProbeVolumePlugins()...)
+    allPlugins = append(allPlugins, rbd.ProbeVolumePlugins()...)
+    return allPlugins
+   }
+</code></pre>
+
+<p>可以看出，在 ProbeAttachableVolumePlugins() 方法中，通过调用ProbeVolumePlugins() 方法，返回k8s 支持的持久化存储插件列表，存储插件包括了aws, cinder, vsphere等。本文先主要关注cinder 存储插件。<strong>查看cinder包下的ProbeVolumePlugins()，发现该方法返回的是一个初始化的cinderPlugin 结构体</strong>，初始化内容为空值。该结构体实现了接口VolumePlugin 声明的方法，VolumePlugin 接口声明如下：</p>
+
+<p>​</p>
+
+<p>pkg/volume/plugins.go</p>
+
+<pre><code>   type VolumePlugin interface {
+    Init(host VolumeHost) error
+    GetPluginName() string
+    GetVolumeName(spec *Spec) (string, error)
+    CanSupport(spec *Spec) bool
+    RequiresRemount() bool
+    NewMounter(spec *Spec, podRef *v1.Pod, opts VolumeOptions) (Mounter, error)
+    NewUnmounter(name string, podUID types.UID) (Unmounter, error)
+    ConstructVolumeSpec(volumeName, mountPath string) (*Spec, error)
+    SupportsMountOption() bool
+    SupportsBulkVolumeVerification() bool
+   }
+</code></pre>
+
+<p>​</p>
+
+<p>下面主要沿着ProbeAttachableVolumePlugins()方法的返回值的传递，了解一下在 k8s 中cinder卷管理控制器的初始化，以及卷管理的实现。上文提到，ProbeAttachableVolumePlugins()方法的返回值传入 NewAttachDetachController() 方法中，以下是 NewAttachDetachController() 方法的实现</p>
+
+<p>pkg/controller/volume/attachdetach/attach_detach_controller.go</p>
+
+<pre><code>   func NewAttachDetachController(
+    kubeClient clientset.Interface,
+    podInformer coreinformers.PodInformer,
+    nodeInformer coreinformers.NodeInformer,
+    pvcInformer coreinformers.PersistentVolumeClaimInformer,
+    pvInformer coreinformers.PersistentVolumeInformer,
+    cloud cloudprovider.Interface,
+    plugins []volume.VolumePlugin,
+    prober volume.DynamicPluginProber,
+    disableReconciliationSync bool,
+    reconcilerSyncDuration time.Duration,
+    timerConfig TimerConfig) (AttachDetachController, error) {
+    
+    adc := &amp;attachDetachController{
+        kubeClient:  kubeClient,
+        pvcLister:   pvcInformer.Lister(),
+        pvcsSynced:  pvcInformer.Informer().HasSynced,
+        pvLister:    pvInformer.Lister(),
+        pvsSynced:   pvInformer.Informer().HasSynced,
+        podLister:   podInformer.Lister(),
+        podsSynced:  podInformer.Informer().HasSynced,
+        nodeLister:  nodeInformer.Lister(),
+        nodesSynced: nodeInformer.Informer().HasSynced,
+        cloud:       cloud,
+    }
+
+    if err := adc.volumePluginMgr.InitPlugins(plugins, prober, adc); err != nil {
+        return nil, fmt.Errorf(&quot;Could not initialize volume plugins for Attach/Detach Controller: %+v&quot;, err)
+    }
+
+    eventBroadcaster := record.NewBroadcaster()
+    eventBroadcaster.StartLogging(glog.Infof)
+    eventBroadcaster.StartRecordingToSink(&amp;v1core.EventSinkImpl{Interface: v1core.New(kubeClient.CoreV1().RESTClient()).Events(&quot;&quot;)})
+    recorder := eventBroadcaster.NewRecorder(scheme.Scheme, v1.EventSource{Component: &quot;attachdetach-controller&quot;})
+
+    adc.desiredStateOfWorld = cache.NewDesiredStateOfWorld(&amp;adc.volumePluginMgr)
+    adc.actualStateOfWorld = cache.NewActualStateOfWorld(&amp;adc.volumePluginMgr)
+    adc.attacherDetacher =
+        operationexecutor.NewOperationExecutor(operationexecutor.NewOperationGenerator(
+            kubeClient,
+            &amp;adc.volumePluginMgr,
+            recorder,
+            false)) // flag for experimental binary check for volume mount
+    adc.nodeStatusUpdater = statusupdater.NewNodeStatusUpdater(
+        kubeClient, nodeInformer.Lister(), adc.actualStateOfWorld)
+
+    // Default these to values in options
+    adc.reconciler = reconciler.NewReconciler(
+        timerConfig.ReconcilerLoopPeriod,
+        timerConfig.ReconcilerMaxWaitForUnmountDuration,
+        reconcilerSyncDuration,
+        disableReconciliationSync,
+        adc.desiredStateOfWorld,
+        adc.actualStateOfWorld,
+        adc.attacherDetacher,
+        adc.nodeStatusUpdater,
+        recorder)
+
+    adc.desiredStateOfWorldPopulator = populator.NewDesiredStateOfWorldPopulator(
+        timerConfig.DesiredStateOfWorldPopulatorLoopSleepPeriod,
+        timerConfig.DesiredStateOfWorldPopulatorListPodsRetryDuration,
+        podInformer.Lister(),
+        adc.desiredStateOfWorld,
+        &amp;adc.volumePluginMgr,
+        pvcInformer.Lister(),
+        pvInformer.Lister())
+
+    podInformer.Informer().AddEventHandler(kcache.ResourceEventHandlerFuncs{
+        AddFunc:    adc.podAdd,
+        UpdateFunc: adc.podUpdate,
+        DeleteFunc: adc.podDelete,
+    })
+
+    nodeInformer.Informer().AddEventHandler(kcache.ResourceEventHandlerFuncs{
+        AddFunc:    adc.nodeAdd,
+        UpdateFunc: adc.nodeUpdate,
+        DeleteFunc: adc.nodeDelete,
+    })
+
+    return adc, nil
+   }
+</code></pre>
+
+<p>在 NewAttachDetachController() 方法中，变量adc 为初始化的结构体attachDetachController 的引用，结构体 attachDetachController 实际上实现了接口 VolumeHost(pkg/volume/plugin.go)，以下是VolumeHost 接口的声明：</p>
+
+<pre><code>   type VolumeHost interface {
+    GetPluginDir(pluginName string) string
+    GetPodVolumeDir(podUID types.UID, pluginName string, volumeName string) string
+    GetPodPluginDir(podUID types.UID, pluginName string) string
+    GetKubeClient() clientset.Interface
+    NewWrapperMounter(volName string, spec Spec, pod *v1.Pod, opts VolumeOptions) (Mounter, error)
+    NewWrapperUnmounter(volName string, spec Spec, podUID types.UID) (Unmounter, error)
+    GetCloudProvider() cloudprovider.Interface
+    GetMounter(pluginName string) mount.Interface
+    GetWriter() io.Writer
+    GetHostName() string
+    GetHostIP() (net.IP, error)
+    GetNodeAllocatable() (v1.ResourceList, error)
+    GetSecretFunc() func(namespace, name string) (*v1.Secret, error)
+    GetConfigMapFunc() func(namespace, name string) (*v1.ConfigMap, error)
+    GetExec(pluginName string) mount.Exec
+    GetNodeLabels() (map[string]string, error)
+   }
+</code></pre>
+
+<p>​</p>
+
+<p>plugins  参数被传入InitPlugins() 方法。InitPlugins() 方法是结构体VolumePluginMgr 里实现的一个成员方法，以下是InitPlugins() 方法的实现。</p>
+
+<p>pkg/volume/plugins.go</p>
+
+<pre><code>   func (pm *VolumePluginMgr) InitPlugins(plugins []VolumePlugin, prober DynamicPluginProber, host VolumeHost) error {
+    pm.mutex.Lock()
+    defer pm.mutex.Unlock()
+
+    pm.Host = host
+
+    if prober == nil {
+        // Use a dummy prober to prevent nil deference.
+        pm.prober = &amp;dummyPluginProber{}
+    } else {
+        pm.prober = prober
+    }
+    if err := pm.prober.Init(); err != nil {
+        // Prober init failure should not affect the initialization of other plugins.
+        glog.Errorf(&quot;Error initializing dynamic plugin prober: %s&quot;, err)
+        pm.prober = &amp;dummyPluginProber{}
+    }
+
+    if pm.plugins == nil {
+        pm.plugins = map[string]VolumePlugin{}
+    }
+
+    allErrs := []error{}
+    for _, plugin := range plugins {
+        name := plugin.GetPluginName()
+        if errs := validation.IsQualifiedName(name); len(errs) != 0 {
+            allErrs = append(allErrs, fmt.Errorf(&quot;volume plugin has invalid name: %q: %s&quot;, name, strings.Join(errs, &quot;;&quot;)))
+            continue
+        }
+
+        if _, found := pm.plugins[name]; found {
+            allErrs = append(allErrs, fmt.Errorf(&quot;volume plugin %q was registered more than once&quot;, name))
+            continue
+        }
+        /*调用每个plugin 的初始化方法，在每个plugin 的New* 方法调用之前,需要调用每个plugin 的Init 
+         方法对plugin进行初始化，例如cinderPlugin.Init() */
+        err := plugin.Init(host) 
+        if err != nil {
+            glog.Errorf(&quot;Failed to load volume plugin %s, error: %s&quot;, name, err.Error())
+            allErrs = append(allErrs, err)
+            continue
+        }
+        pm.plugins[name] = plugin
+        glog.V(1).Infof(&quot;Loaded volume plugin %q&quot;, name)
+    }
+    return utilerrors.NewAggregate(allErrs)
+   }
+</code></pre>
+
+<p>在InitPlugins 方法的参数中，变量plugins 为ProbeAttachableVolumePlugins() 的返回值，为一个列表结构。变量s 来自startAttachDetachController() 方法中传入的参数GetDynamicPluginProber(ctx.Options.VolumeConfiguration)。变量host是 VolumeHost 接口类型，在这里运用了多态的特性（因为发现接口 VolumeHost 的方法在其他结构体也有实现，比如kubelet.kubeletVolumeHost)，传入的是结构体attachDetachController 的引用adc 。</p>
+
+<p>​</p>
+
+<p><code>plugin</code> 实现了接口VolumePlugin，Init方法便是其中之一，进入cinderPlugin 的Init方法中，便是实现了对plugin 结构体属性的赋值。如下：</p>
+
+<pre><code>   func (plugin *cinderPlugin) Init(host volume.VolumeHost) error {
+    /*host实际为一个 attachDetachController 结构体变量adc，该变量在NewAttachDetachController()
+      方法中初始化*/
+    plugin.host = host  
+    plugin.volumeLocks = keymutex.NewKeyMutex()
+    return nil
+   }
+</code></pre>
+
+<p>至此，本文分析了卷管理器 controllers[&ldquo;attachdetach&rdquo;] 的初始化(包括controller 和支持的卷插件[]VolumePlugin), 总结一下主要主要流程：</p>
+
+<ol>
+<li>得到所有controller 的start* 方法，如卷管理相关的startAttachDetachController</li>
+<li>调用 StartControllers 方法，根据!ctx.IsControllerEnabled(controllerName) 决定是否初始化一个controller.</li>
+<li>步骤2 中如果调用 controller 的start*  方法，初始化controller 。 如：startAttachDetachController</li>
+<li>在每一个controller 初始化方法里，完成实际的初始化方法。如卷管理中，调用NewAttachDetachController () 完成初始化每一个VolumePlugin 结构体。</li>
+<li>步骤4结束后，返回attachDetachController 结构体引用</li>
+
+<li><p>在 步骤2 中的start* 方法，调用run 方法。</p></li>
+
+<li><p>挂载卷过程</p></li>
+</ol>
+
+<p>cinderPlugin 实际上还是实现了AttachableVolumePlugin接口的函数，以下是AttachableVolumePlugin接口的方法声明, 该接口扩展了VolumePlugin，新添加声明了3个方法。</p>
+
+<p>pkg/volume/plugins.go</p>
+
+<pre><code>type AttachableVolumePlugin interface {
+    VolumePlugin
+    NewAttacher() (Attacher, error)
+    NewDetacher() (Detacher, error)
+    GetDeviceMountRefs(deviceMountPath string) ([]string, error)
+}
+</code></pre>
+
+<p>以下是NewAttacher 在cinderPlugin 里的实现</p>
+
+<p>pkg/volume/cinder/attacher.go</p>
+
+<pre><code>func (plugin *cinderPlugin) NewAttacher() (volume.Attacher, error) {
+   /*正确情况下，getCloudProvider 返回OpenStack 结构体，该结构体实现了两个接口定义的方法，两个接口定义
+     及被实现的位置分别是：1. cloud.go 中的Interface 接口，在openstack.go 中实现；
+                         2. cinder.go 中的CinderProvider 接口，在openstack_volume.go 中实现。
+   */
+     
+   cinder, err := getCloudProvider(plugin.host.GetCloudProvider())
+   
+   ....
+   return &amp;cinderDiskAttacher{
+          /*host实际为一个 attachDetachController 结构体变量adc，该变量在  
+            NewAttachDetachController()方法中初始化*/ 
+        host:           plugin.host, 
+        cinderProvider: cinder,
+    }, nil
+</code></pre>
+
+<p>syncStates</p>
+
+<p>pkg/kubelet/volumemanager/cache/desired_state_of_world.go</p>
+
+<pre><code>func (dsw *desiredStateOfWorld) isAttachableVolume(volumeSpec *volume.Spec) bool {
+    attachableVolumePlugin, _ :=
+        dsw.volumePluginMgr.FindAttachablePluginBySpec(volumeSpec)
+    if attachableVolumePlugin != nil {
+        volumeAttacher, err := attachableVolumePlugin.NewAttacher()
+        if err == nil &amp;&amp; volumeAttacher != nil {
+            return true
+        }
+    }
+    return false
+}
+</code></pre>
+
+<p>和NewDetacher</p>
+
+<p>pkg/volume/cinder/attacher.go</p>
+
+<pre><code>func (plugin *cinderPlugin) NewDetacher() (volume.Detacher, error) {
+    cinder, err := getCloudProvider(plugin.host.GetCloudProvider())
+    if err != nil {
+        return nil, err
+    }
+    return &amp;cinderDiskDetacher{
+        mounter:        plugin.host.GetMounter(plugin.GetPluginName()),
+        cinderProvider: cinder,
+    }, nil
+}
+</code></pre>
+
+            </article>
+
+            <ul class="pager blog-pager">
+                 
+                <li class="next">
+                    <a href="https://rootdeep.github.io/posts/openstack-api-microversion/" data-toggle="tooltip" data-placement="top" title="OpenStack 微版本实现原理">Next Post &rarr;</a>
+                </li>
+                
+            </ul>
+            
+            <div>
+                 
+            </div>
+            
+            
+            
+            
+<div>
+    <section id="datecount">
+        <h4 id="date"> Thu Jun 1, 2017</h4>
+    </section>
+    <h5 id="wc">5300 Words|Read in about 11 Min</h5>
+    <h5 id="tags">Tags: 
+        
+        <a href="https://rootdeep.github.io/tags/kubernetes/">kubernetes</a> &nbsp;
+    </h5>
+</div>
+
+            
+            </div>
+            
+            
+                
+                 <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+<aside id=comments>
+     
+    <div>
+        <h2> Comments </h2>
+    </div>
+    <div id="container"></div>
+    <link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
+    <script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+    <script>
+        var gitment = new Gitment({
+					    id: "K8s 卷管理源码分析（一）",
+                        owner: 'rootdeep', 
+                        repo: 'rootdeep.github.io', 
+                        oauth: {
+                            client_id: 'a45f8ab669362a110f83',
+                            client_secret: '925eb6e429ff5eb575823cd6a7e193dcad2a61f4',
+                        },
+                    })
+        gitment.render('container')
+    </script>
+	
+    
+</aside>
+
+                
+            
+        </div>
+    </div>
+    </section>
+</div>
+
+    <footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <ul class="list-inline text-center footer-links">
+          
+              <li>
+                <a href="https://github.com/rootdeep" title="GitHub">
+                  <span class="fa-stack fa-lg">
+                    <i class="fa fa-circle fa-stack-2x"></i>
+                    <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+          
+        </ul>
+        <p class="credits copyright text-muted">
+        &copy;2017
+          
+            
+              <a href="https://rootdeep.github.io/">Zhiguo Li</a>
+            
+          
+          &nbsp;&bull;&nbsp;
+          June 23,2018
+          updated
+          
+            &nbsp;&bull;&nbsp;
+            <a href="https://rootdeep.github.io/">RootDeep</a>
+          
+        </p>
+        
+        <p class="credits theme-by text-muted">
+          <a href="http://gohugo.io">Hugo v0.37</a> powered &nbsp;&bull;&nbsp; Theme by <a href="http://deanattali.com/beautiful-jekyll/">Beautiful Jekyll</a> adapted to <a href="https://github.com/rootsongjc/beautifulhugo">Beautiful Hugo</a>
+          
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.7.1/katex.min.js" integrity="sha384-/y1Nn9+QQAipbNQWU65krzJralCnuOasHncUFXGkdwntGeSvQicrYkiUBwsgUqc1" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.7.1/contrib/auto-render.min.js" integrity="sha384-dq1/gEHSxPZQ7DdrM82ID4YVol9BYyU7GbWlIwnwyPzotpoc57wDw/guX8EaYGPx" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+<script src="https://rootdeep.github.io/js/main.js"></script>
+
+<script> renderMathInElement(document.body); </script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.1/photoswipe.min.js" integrity="sha256-UplRCs9v4KXVJvVY+p+RSo5Q4ilAUXh7kpjyIP5odyc=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.1/photoswipe-ui-default.min.js" integrity="sha256-PWHOlUzc96pMc8ThwRIXPn8yH4NOLu42RQ0b9SpnpFk=" crossorigin="anonymous"></script>
+<script src="https://rootdeep.github.io/js/load-photoswipe.js"></script>
+<script src="https://rootdeep.github.io/js/prism.js"></script>
+
+
+<script src="https://rootdeep.github.io/js/prism.js"></script>
+
+
+  </body>
+</html>
+

@@ -5,9 +5,7 @@
     <link>https://rootdeep.github.io/tags/microversion/</link>
     <description>Recent content in Microversion on RootDeep</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>zh-cn</language>
-    <managingEditor>zhiguo.lee@foxmail.com</managingEditor>
-    <webMaster>zhiguo.lee@foxmail.com</webMaster>
+    <language>zh</language>
     <lastBuildDate>Thu, 21 Sep 2017 14:03:57 +0800</lastBuildDate>
     
 	<atom:link href="https://rootdeep.github.io/tags/microversion/index.xml" rel="self" type="application/rss+xml" />
@@ -15,10 +13,10 @@
     
     <item>
       <title>OpenStack 微版本实现原理</title>
-      <link>https://rootdeep.github.io/post/openstack-api-microversion/</link>
+      <link>https://rootdeep.github.io/posts/openstack-api-microversion/</link>
       <pubDate>Thu, 21 Sep 2017 14:03:57 +0800</pubDate>
-      <author>zhiguo.lee@foxmail.com</author>
-      <guid>https://rootdeep.github.io/post/openstack-api-microversion/</guid>
+      
+      <guid>https://rootdeep.github.io/posts/openstack-api-microversion/</guid>
       <description>在OpenStack Kilo 版本的Nova项目中，首次引入了 API Microversioning 的概念，随后各个项目遵循此设计，根据需求也引入了微版本功能。引入微版本主要目的就是</description>
     </item>
     

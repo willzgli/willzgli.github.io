@@ -5,9 +5,7 @@
     <link>https://rootdeep.github.io/tags/etcd/</link>
     <description>Recent content in Etcd on RootDeep</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>zh-cn</language>
-    <managingEditor>zhiguo.lee@foxmail.com</managingEditor>
-    <webMaster>zhiguo.lee@foxmail.com</webMaster>
+    <language>zh</language>
     <lastBuildDate>Wed, 16 May 2018 10:22:57 +0800</lastBuildDate>
     
 	<atom:link href="https://rootdeep.github.io/tags/etcd/index.xml" rel="self" type="application/rss+xml" />
@@ -15,10 +13,10 @@
     
     <item>
       <title>etcd member 冲突的临时解决方法</title>
-      <link>https://rootdeep.github.io/post/fix-stale-node-in-etcd-cluster/</link>
+      <link>https://rootdeep.github.io/posts/fix-stale-node-in-etcd-cluster/</link>
       <pubDate>Wed, 16 May 2018 10:22:57 +0800</pubDate>
-      <author>zhiguo.lee@foxmail.com</author>
-      <guid>https://rootdeep.github.io/post/fix-stale-node-in-etcd-cluster/</guid>
+      
+      <guid>https://rootdeep.github.io/posts/fix-stale-node-in-etcd-cluster/</guid>
       <description>近日，搭建了一个etcd 集群，在关闭了集群的一个节点之后，又重新创建了一个新的节点，并且新的节点依旧用原来的IP，但是在新的节点上启动etc</description>
     </item>
     

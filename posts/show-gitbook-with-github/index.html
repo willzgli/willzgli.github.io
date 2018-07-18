@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
+  <title> 发布Gitbook至GitHub个人主页 - </title>
+  <meta name="description" content="" />
+  <meta property="og:title" content="发布Gitbook至GitHub个人主页" />
+  <meta name="twitter:title" content="发布Gitbook至GitHub个人主页" />
+  <meta name="description" content="这里不讲如何生成gitbook的html 静态网页，跳过这一步，从如何发布静态网页到GitHub的个人主页(http://{username}">
+  <meta property="og:description" content="这里不讲如何生成gitbook的html 静态网页，跳过这一步，从如何发布静态网页到GitHub的个人主页(http://{username}">
+  <meta name="twitter:description" content="这里不讲如何生成gitbook的html 静态网页，跳过这一步，从如何发布静态网页到GitHub的个人主页(http://{username}">
+  <meta name="author" content="Zhiguo Li"/>
+  <meta property="og:image" content="https://rootdeep.github.io/rootdeep.jpg" />
+  <meta name="twitter:image" content="https://rootdeep.github.io/rootdeep.jpg" />
+  <meta name="twitter:card" content="summary" />
+  <meta property="og:url" content="https://rootdeep.github.io/posts/show-gitbook-with-github/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="RootDeep" />
+
+  <meta name="generator" content="Hugo 0.37" />
+  <link rel="canonical" href="https://rootdeep.github.io/posts/show-gitbook-with-github/" />
+  <link rel="alternate" href="https://rootdeep.github.io/index.xml" type="application/rss+xml" title="RootDeep">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.7.1/katex.min.css" integrity="sha384-wITovz90syo1dJWVh32uuETPVEtGigN07tkttEqPv+uR2SE/mbQcG7ATL28aI9H0" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://rootdeep.github.io/css/main.css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" />
+  
+
+<meta name="baidu-site-verification" content="g8IYR9SNLF" />
+<script>
+    var _hmt = _hmt || [];
+    (function() {
+    var hm = document.createElement("script");
+    hm.src = "https://hm.baidu.com/hm.js?11f7d254cfa4e0ca44b175c66d379ecc";
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+
+<link rel="stylesheet" href="https://rootdeep.github.io/css/prism.css" />
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.1/photoswipe.min.css" integrity="sha256-sCl5PUOGMLfFYctzDW3MtRib0ctyUvI9Qsmq2wXOeBY=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.1/default-skin/default-skin.min.css" integrity="sha256-BFeI1V+Vh1Rk37wswuOYn5lsTcaU96hGaI7OUVCLjPc=" crossorigin="anonymous" />
+
+
+
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+<div class="pswp__bg"></div>
+
+<div class="pswp__scroll-wrap">
+    
+    <div class="pswp__container">
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+    </div>
+    
+    <div class="pswp__ui pswp__ui--hidden">
+    <div class="pswp__top-bar">
+      
+      <div class="pswp__counter"></div>
+      <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+      <button class="pswp__button pswp__button--share" title="Share"></button>
+      <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+      <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+      
+      
+      <div class="pswp__preloader">
+        <div class="pswp__preloader__icn">
+          <div class="pswp__preloader__cut">
+            <div class="pswp__preloader__donut"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+      <div class="pswp__share-tooltip"></div>
+    </div>
+    <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+    </button>
+    <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+    </button>
+    <div class="pswp__caption">
+      <div class="pswp__caption__center"></div>
+    </div>
+    </div>
+    </div>
+</div>
+
+</head>
+
+  <body>
+    <nav class="navbar navbar-default navbar-fixed-top navbar-custom">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#main-navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="https://rootdeep.github.io/">RootDeep</a>
+    </div>
+
+    <div class="collapse navbar-collapse" id="main-navbar">
+      <ul class="nav navbar-nav navbar-right">
+        
+          
+            <li>
+              <a title="Home" href="/">Home</a>
+            </li>
+          
+        
+          
+            <li class="navlinks-container">
+              <a class="navlinks-parent" href="javascript:void(0)">Categories</a>
+              <div class="navlinks-children">
+                
+                  <a href="/categories/kubernetes">kubernetes</a>
+                
+                  <a href="/categories/linux-practice">Linux Practice</a>
+                
+                  <a href="/categories/openstack">OpenStack</a>
+                
+                  <a href="/categories/github">Github</a>
+                
+                  <a href="/categories/devops">Devops</a>
+                
+              </div>
+            </li>
+          
+        
+          
+            <li class="navlinks-container">
+              <a class="navlinks-parent" href="javascript:void(0)">Gitbooks</a>
+              <div class="navlinks-children">
+                
+                  <a href="/k8s-source-code-analysis">k8s sourcecode analysis</a>
+                
+                  <a href="/docker-handbook">Docker handbook</a>
+                
+                  <a href="/simple-operation-of-oz-tool">Oz Tool</a>
+                
+              </div>
+            </li>
+          
+        
+          
+            <li>
+              <a title="About" href="/about">About</a>
+            </li>
+          
+        
+
+        
+
+        
+      </ul>
+    </div>
+
+    <div class="avatar-container">
+      <div class="avatar-img-border">
+        
+          <a title="RootDeep" href="https://rootdeep.github.io/">
+            <img class="avatar-img" src="https://rootdeep.github.io/rootdeep.jpg" alt="RootDeep" />
+          </a>
+        
+      </div>
+    </div>
+
+  </div>
+</nav>
+
+
+
+
+    
+  
+  
+  
+
+
+
+
+  
+
+  <header class="header-section ">
+    
+    <div class="intro-header no-img">
+      
+      <div class="container">
+        <div class="row">
+            
+          <div class="col-lg-12 col-md-12 col-md-offset-0">
+            <div class="posts-heading">
+                <h1 align="center">发布Gitbook至GitHub个人主页</h1>
+                
+                
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+
+    
+<div class="container" role="main" itemscope itemtype="http://schema.org/Article">
+    <div class="row">
+        <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+            
+            
+            
+<div>
+    <section id="datecount">
+        <h4 id="date"> Tue May 15, 2018</h4>
+    </section>
+    <h5 id="wc">1000 Words|Read in about 2 Min</h5>
+    <h5 id="tags">Tags: 
+        
+        <a href="https://rootdeep.github.io/tags/gitbook-github/">gitbook, github</a> &nbsp;
+    </h5>
+</div>
+
+            
+            <article role="main" class="blog-post" itemprop="articleBody" id="content">
+                
+<aside class="toc">
+  
+</aside>
+
+
+                <p>这里不讲如何生成gitbook的html 静态网页，跳过这一步，从如何发布静态网页到GitHub的个人主页(http://{username}.github.io)下说起。即本文的主题是通过域名<code>http://{username}.github.io/{gitbook_repository}</code> 实现访问自己的gitbook 内容。</p>
+
+<p><strong>准备工作：</strong></p>
+
+<ol>
+<li>已经在github 创建了名称为{username}.github.io的项目，这个名称格式的项目将是个人主页的入口，地址为：http://{username}.github.io 。、</li>
+<li>已经生成了gitbook 的静态网页。通常在gitbook 的源文件下运行命令gitbook build ,生成的静态网页默认保存位置在./_book目录下。</li>
+<li>需要明白Github Pages 概念。具体地简单阅读此链接便可明白：<a href="https://help.github.com/articles/configuring-a-publishing-source-for-github-pages/">https://help.github.com/articles/configuring-a-publishing-source-for-github-pages/</a></li>
+</ol>
+
+<p><strong>方法原理：</strong></p>
+
+<ul>
+<li><p>在GitHub上新建一个项目，该项目将会具有两个分支：</p>
+
+<ol>
+<li>master 分支： 用来保存Gitbook的源文件</li>
+<li>gh-pages 分支:用来保存生成的静态网页</li>
+</ol></li>
+
+<li><p>设置gh-pages 分支为 GitHub Pages site</p></li>
+</ul>
+
+<p><strong>具体步骤：</strong></p>
+
+<ol>
+<li><p>在GitHub 新建一个仓库，名字就是访问域名中的{gitbook_repository}字段，本例中使用example-book 作为仓库名进行说明。</p></li>
+
+<li><p>将该仓库复制到本地（git clone example-book)</p>
+
+<ul>
+<li>为该项目添加.gitignore 文件，将_book 目录添加到忽略文件中去，以便在将源码上传到master 分支时，忽略_book 下的静态网页文件。</li>
+</ul></li>
+
+<li><p>为该仓库新建gh-pages 分支(git checkout -b gh-pages)</p></li>
+
+<li><p>建立gh-pages 的远程库 git push origin gh-pages</p></li>
+
+<li><p>清空分支gh-pages 的内容 (git rm -&gt;git add -&gt;git commit -&gt;git push)</p></li>
+
+<li><p>在一个新的目录复制远程仓库的gh-pages 分支并保存为 book-build</p>
+
+<p><code>git clone -b gh-pages git@github.com:{USERNAME}/example-book.git  book-build</code></p></li>
+
+<li><p>在本地切回master分之后, 在主分支上编写gitbook 的源码</p></li>
+
+<li><p>使用<code>gitbook serve</code> 命令后，可以使用localhost:4000 查看生成的book</p></li>
+
+<li><p>确认生成book的内容无误后：</p>
+
+<ul>
+<li>将源码推送到远程master分支以便保存</li>
+<li>将_book 目录下的内容复制到book-build 目录下，并推送至远程gh-pages<br />
+分支</li>
+</ul></li>
+
+<li><p>确认使用gh-pages分支生成该仓库的主页，具体如下：
+进入项目&ndash;&gt;settings &ndash;&gt;下拉至Github Pages</p></li>
+</ol>
+
+<p><img src="/github-setttings.png" alt="github-setttings" /></p>
+
+<p><img src="/github-pages.png" alt="github-setttings" /></p>
+
+<p>最后，使用http://{username}.github.io/example-book 域名访问Gitbook</p>
+
+<p><img src="/gitbook.png" alt="gitbook" /></p>
+
+            </article>
+
+            <ul class="pager blog-pager">
+                
+                <li class="previous">
+                    <a href="https://rootdeep.github.io/posts/cat-special-charactars-in-shell-to-file/" data-toggle="tooltip" data-placement="top" title="将shell 命令中特殊字符 cat 到文件的方法">&larr; Previous Post</a>
+                </li>
+                 
+                <li class="next">
+                    <a href="https://rootdeep.github.io/posts/create-vm-image-with-oz/" data-toggle="tooltip" data-placement="top" title="使用Oz工具自动化虚拟机镜像">Next Post &rarr;</a>
+                </li>
+                
+            </ul>
+            
+            <div>
+                 
+            </div>
+            
+            
+            
+            
+<div>
+    <section id="datecount">
+        <h4 id="date"> Tue May 15, 2018</h4>
+    </section>
+    <h5 id="wc">1000 Words|Read in about 2 Min</h5>
+    <h5 id="tags">Tags: 
+        
+        <a href="https://rootdeep.github.io/tags/gitbook-github/">gitbook, github</a> &nbsp;
+    </h5>
+</div>
+
+            
+            </div>
+            
+            
+                
+                 <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+<aside id=comments>
+     
+    <div>
+        <h2> Comments </h2>
+    </div>
+    <div id="container"></div>
+    <link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
+    <script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+    <script>
+        var gitment = new Gitment({
+					    id: "发布Gitbook至GitHub个人主页",
+                        owner: 'rootdeep', 
+                        repo: 'rootdeep.github.io', 
+                        oauth: {
+                            client_id: 'a45f8ab669362a110f83',
+                            client_secret: '925eb6e429ff5eb575823cd6a7e193dcad2a61f4',
+                        },
+                    })
+        gitment.render('container')
+    </script>
+	
+    
+</aside>
+
+                
+            
+        </div>
+    </div>
+    </section>
+</div>
+
+    <footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <ul class="list-inline text-center footer-links">
+          
+              <li>
+                <a href="https://github.com/rootdeep" title="GitHub">
+                  <span class="fa-stack fa-lg">
+                    <i class="fa fa-circle fa-stack-2x"></i>
+                    <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+          
+        </ul>
+        <p class="credits copyright text-muted">
+        &copy;2017
+          
+            
+              <a href="https://rootdeep.github.io/">Zhiguo Li</a>
+            
+          
+          &nbsp;&bull;&nbsp;
+          June 23,2018
+          updated
+          
+            &nbsp;&bull;&nbsp;
+            <a href="https://rootdeep.github.io/">RootDeep</a>
+          
+        </p>
+        
+        <p class="credits theme-by text-muted">
+          <a href="http://gohugo.io">Hugo v0.37</a> powered &nbsp;&bull;&nbsp; Theme by <a href="http://deanattali.com/beautiful-jekyll/">Beautiful Jekyll</a> adapted to <a href="https://github.com/rootsongjc/beautifulhugo">Beautiful Hugo</a>
+          
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.7.1/katex.min.js" integrity="sha384-/y1Nn9+QQAipbNQWU65krzJralCnuOasHncUFXGkdwntGeSvQicrYkiUBwsgUqc1" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.7.1/contrib/auto-render.min.js" integrity="sha384-dq1/gEHSxPZQ7DdrM82ID4YVol9BYyU7GbWlIwnwyPzotpoc57wDw/guX8EaYGPx" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+<script src="https://rootdeep.github.io/js/main.js"></script>
+
+<script> renderMathInElement(document.body); </script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.1/photoswipe.min.js" integrity="sha256-UplRCs9v4KXVJvVY+p+RSo5Q4ilAUXh7kpjyIP5odyc=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.1/photoswipe-ui-default.min.js" integrity="sha256-PWHOlUzc96pMc8ThwRIXPn8yH4NOLu42RQ0b9SpnpFk=" crossorigin="anonymous"></script>
+<script src="https://rootdeep.github.io/js/load-photoswipe.js"></script>
+<script src="https://rootdeep.github.io/js/prism.js"></script>
+
+
+<script src="https://rootdeep.github.io/js/prism.js"></script>
+
+
+  </body>
+</html>
+

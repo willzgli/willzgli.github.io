@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Posts on RootDeep</title>
+    <link>https://rootdeep.github.io/posts/</link>
+    <description>Recent content in Posts on RootDeep</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh</language>
+    <lastBuildDate>Sat, 23 Jun 2018 11:18:57 +0800</lastBuildDate>
+    
+	<atom:link href="https://rootdeep.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Rabbit Driver Connection 创建流程</title>
+      <link>https://rootdeep.github.io/posts/rpc-rabbit-con-in-oslo-messaging/</link>
+      <pubDate>Sat, 23 Jun 2018 11:18:57 +0800</pubDate>
+      
+      <guid>https://rootdeep.github.io/posts/rpc-rabbit-con-in-oslo-messaging/</guid>
+      <description>本节主要分析了RabbitDriver中Connection类的初始化过程中，一个TCP 连接过程中调用代码的流程。流程深入到了kombu 库的</description>
+    </item>
+    
+    <item>
+      <title>OpenStack RPC Call/CAST 调用流程</title>
+      <link>https://rootdeep.github.io/posts/rpc-call-procedure-in-oslo-messaging/</link>
+      <pubDate>Thu, 21 Jun 2018 09:18:57 +0800</pubDate>
+      
+      <guid>https://rootdeep.github.io/posts/rpc-call-procedure-in-oslo-messaging/</guid>
+      <description>最近遇到了一个关于nova 组件调用oslo.messaging 库代码出现异常的问题。抛出的异常，大概描述如下 2018-06-13 11:06:33.927 8965 ERROR oslo.messaging._drivers.impl_rabbit [req-6d5699d8-63be-4bba-b2e2-fe7f53dc2699 4f1b9c862dfa4191b61370b72e04795d 3b9839f8a90f47faa6566ef473b77593 - default default] Failed to publish message to</description>
+    </item>
+    
+    <item>
+      <title>K8s 卷在线扩容调研</title>
+      <link>https://rootdeep.github.io/posts/auto-scale-k8s-volume/</link>
+      <pubDate>Fri, 15 Jun 2018 20:18:57 +0800</pubDate>
+      
+      <guid>https://rootdeep.github.io/posts/auto-scale-k8s-volume/</guid>
+      <description>自己遇到了一个扩容在线卷（已绑定到POD的卷的）的需求。调研了一番，发现在k8s 1.8 alpha版本中，提供了一种卷扩容的方法，并且支持扩容的卷</description>
+    </item>
+    
+    <item>
+      <title>手动制作OpenStack 虚拟机镜像</title>
+      <link>https://rootdeep.github.io/posts/make-openstack-image-manully/</link>
+      <pubDate>Thu, 07 Jun 2018 19:05:57 +0800</pubDate>
+      
+      <guid>https://rootdeep.github.io/posts/make-openstack-image-manully/</guid>
+      <description>最近对制作OpenStack 虚拟机镜像起了兴趣，主要是因为自己在OpenStack集群上创建了一些虚拟机并安装了常用的软件，但是这个Open</description>
+    </item>
+    
+    <item>
+      <title>helm 自带私有仓库使用方法</title>
+      <link>https://rootdeep.github.io/posts/simple-operation-of-helm-repo/</link>
+      <pubDate>Wed, 16 May 2018 14:03:57 +0800</pubDate>
+      
+      <guid>https://rootdeep.github.io/posts/simple-operation-of-helm-repo/</guid>
+      <description>安装helm 客户端后，使用 helm serve 命令可以在本地启动一个私有仓库。 通过helm repo list 可以看到一个仓库名，及仓库地址为: local http://127.0.0.1/charts helm serve 的启动命令参数如下：</description>
+    </item>
+    
+    <item>
+      <title>etcd member 冲突的临时解决方法</title>
+      <link>https://rootdeep.github.io/posts/fix-stale-node-in-etcd-cluster/</link>
+      <pubDate>Wed, 16 May 2018 10:22:57 +0800</pubDate>
+      
+      <guid>https://rootdeep.github.io/posts/fix-stale-node-in-etcd-cluster/</guid>
+      <description>近日，搭建了一个etcd 集群，在关闭了集群的一个节点之后，又重新创建了一个新的节点，并且新的节点依旧用原来的IP，但是在新的节点上启动etc</description>
+    </item>
+    
+    <item>
+      <title>使用Oz工具自动化虚拟机镜像</title>
+      <link>https://rootdeep.github.io/posts/create-vm-image-with-oz/</link>
+      <pubDate>Wed, 16 May 2018 10:22:57 +0800</pubDate>
+      
+      <guid>https://rootdeep.github.io/posts/create-vm-image-with-oz/</guid>
+      <description>Oz 简介 镜像制作一般分为手动制作和自动制作。 手动制作主要流程： 利用OS镜像启动一个虚拟机实例，启动镜像的工具包括virt-install、vi</description>
+    </item>
+    
+    <item>
+      <title>发布Gitbook至GitHub个人主页</title>
+      <link>https://rootdeep.github.io/posts/show-gitbook-with-github/</link>
+      <pubDate>Tue, 15 May 2018 19:33:57 +0800</pubDate>
+      
+      <guid>https://rootdeep.github.io/posts/show-gitbook-with-github/</guid>
+      <description>这里不讲如何生成gitbook的html 静态网页，跳过这一步，从如何发布静态网页到GitHub的个人主页(http://{username}</description>
+    </item>
+    
+    <item>
+      <title>将shell 命令中特殊字符 cat 到文件的方法</title>
+      <link>https://rootdeep.github.io/posts/cat-special-charactars-in-shell-to-file/</link>
+      <pubDate>Fri, 20 Apr 2018 20:18:57 +0800</pubDate>
+      
+      <guid>https://rootdeep.github.io/posts/cat-special-charactars-in-shell-to-file/</guid>
+      <description>有时候，我们会通过cat 的方式在终端敲入多行shell 命令到一个文件中，其中会遇到诸如“ ` ” （ESC 下边的键）或者 “$” 这两个特殊的字符。把</description>
+    </item>
+    
+    <item>
+      <title>OpenStack 微版本实现原理</title>
+      <link>https://rootdeep.github.io/posts/openstack-api-microversion/</link>
+      <pubDate>Thu, 21 Sep 2017 14:03:57 +0800</pubDate>
+      
+      <guid>https://rootdeep.github.io/posts/openstack-api-microversion/</guid>
+      <description>在OpenStack Kilo 版本的Nova项目中，首次引入了 API Microversioning 的概念，随后各个项目遵循此设计，根据需求也引入了微版本功能。引入微版本主要目的就是</description>
+    </item>
+    
+    <item>
+      <title>K8s 卷管理源码分析（一）</title>
+      <link>https://rootdeep.github.io/posts/volume-management-part1/</link>
+      <pubDate>Thu, 01 Jun 2017 20:18:57 +0800</pubDate>
+      
+      <guid>https://rootdeep.github.io/posts/volume-management-part1/</guid>
+      <description>各组件功能： Volume Plugins 存储提供的扩展接口, 包含了各类存储提供者的plugin实现。 实现自定义的Plugins 可以通过FlexVolume(K8s 1</description>
+    </item>
+    
+  </channel>
+</rss>

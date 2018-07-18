@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
+  <title> etcd member 冲突的临时解决方法 - </title>
+  <meta name="description" content="" />
+  <meta property="og:title" content="etcd member 冲突的临时解决方法" />
+  <meta name="twitter:title" content="etcd member 冲突的临时解决方法" />
+  <meta name="description" content="近日，搭建了一个etcd 集群，在关闭了集群的一个节点之后，又重新创建了一个新的节点，并且新的节点依旧用原来的IP，但是在新的节点上启动etc">
+  <meta property="og:description" content="近日，搭建了一个etcd 集群，在关闭了集群的一个节点之后，又重新创建了一个新的节点，并且新的节点依旧用原来的IP，但是在新的节点上启动etc">
+  <meta name="twitter:description" content="近日，搭建了一个etcd 集群，在关闭了集群的一个节点之后，又重新创建了一个新的节点，并且新的节点依旧用原来的IP，但是在新的节点上启动etc">
+  <meta name="author" content="Zhiguo Li"/>
+  <meta property="og:image" content="https://rootdeep.github.io/rootdeep.jpg" />
+  <meta name="twitter:image" content="https://rootdeep.github.io/rootdeep.jpg" />
+  <meta name="twitter:card" content="summary" />
+  <meta property="og:url" content="https://rootdeep.github.io/posts/fix-stale-node-in-etcd-cluster/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="RootDeep" />
+
+  <meta name="generator" content="Hugo 0.37" />
+  <link rel="canonical" href="https://rootdeep.github.io/posts/fix-stale-node-in-etcd-cluster/" />
+  <link rel="alternate" href="https://rootdeep.github.io/index.xml" type="application/rss+xml" title="RootDeep">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.7.1/katex.min.css" integrity="sha384-wITovz90syo1dJWVh32uuETPVEtGigN07tkttEqPv+uR2SE/mbQcG7ATL28aI9H0" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://rootdeep.github.io/css/main.css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" />
+  
+
+<meta name="baidu-site-verification" content="g8IYR9SNLF" />
+<script>
+    var _hmt = _hmt || [];
+    (function() {
+    var hm = document.createElement("script");
+    hm.src = "https://hm.baidu.com/hm.js?11f7d254cfa4e0ca44b175c66d379ecc";
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+
+<link rel="stylesheet" href="https://rootdeep.github.io/css/prism.css" />
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.1/photoswipe.min.css" integrity="sha256-sCl5PUOGMLfFYctzDW3MtRib0ctyUvI9Qsmq2wXOeBY=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.1/default-skin/default-skin.min.css" integrity="sha256-BFeI1V+Vh1Rk37wswuOYn5lsTcaU96hGaI7OUVCLjPc=" crossorigin="anonymous" />
+
+
+
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+<div class="pswp__bg"></div>
+
+<div class="pswp__scroll-wrap">
+    
+    <div class="pswp__container">
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+    </div>
+    
+    <div class="pswp__ui pswp__ui--hidden">
+    <div class="pswp__top-bar">
+      
+      <div class="pswp__counter"></div>
+      <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+      <button class="pswp__button pswp__button--share" title="Share"></button>
+      <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+      <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+      
+      
+      <div class="pswp__preloader">
+        <div class="pswp__preloader__icn">
+          <div class="pswp__preloader__cut">
+            <div class="pswp__preloader__donut"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+      <div class="pswp__share-tooltip"></div>
+    </div>
+    <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+    </button>
+    <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+    </button>
+    <div class="pswp__caption">
+      <div class="pswp__caption__center"></div>
+    </div>
+    </div>
+    </div>
+</div>
+
+</head>
+
+  <body>
+    <nav class="navbar navbar-default navbar-fixed-top navbar-custom">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#main-navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="https://rootdeep.github.io/">RootDeep</a>
+    </div>
+
+    <div class="collapse navbar-collapse" id="main-navbar">
+      <ul class="nav navbar-nav navbar-right">
+        
+          
+            <li>
+              <a title="Home" href="/">Home</a>
+            </li>
+          
+        
+          
+            <li class="navlinks-container">
+              <a class="navlinks-parent" href="javascript:void(0)">Categories</a>
+              <div class="navlinks-children">
+                
+                  <a href="/categories/kubernetes">kubernetes</a>
+                
+                  <a href="/categories/linux-practice">Linux Practice</a>
+                
+                  <a href="/categories/openstack">OpenStack</a>
+                
+                  <a href="/categories/github">Github</a>
+                
+                  <a href="/categories/devops">Devops</a>
+                
+              </div>
+            </li>
+          
+        
+          
+            <li class="navlinks-container">
+              <a class="navlinks-parent" href="javascript:void(0)">Gitbooks</a>
+              <div class="navlinks-children">
+                
+                  <a href="/k8s-source-code-analysis">k8s sourcecode analysis</a>
+                
+                  <a href="/docker-handbook">Docker handbook</a>
+                
+                  <a href="/simple-operation-of-oz-tool">Oz Tool</a>
+                
+              </div>
+            </li>
+          
+        
+          
+            <li>
+              <a title="About" href="/about">About</a>
+            </li>
+          
+        
+
+        
+
+        
+      </ul>
+    </div>
+
+    <div class="avatar-container">
+      <div class="avatar-img-border">
+        
+          <a title="RootDeep" href="https://rootdeep.github.io/">
+            <img class="avatar-img" src="https://rootdeep.github.io/rootdeep.jpg" alt="RootDeep" />
+          </a>
+        
+      </div>
+    </div>
+
+  </div>
+</nav>
+
+
+
+
+    
+  
+  
+  
+
+
+
+
+  
+
+  <header class="header-section ">
+    
+    <div class="intro-header no-img">
+      
+      <div class="container">
+        <div class="row">
+            
+          <div class="col-lg-12 col-md-12 col-md-offset-0">
+            <div class="posts-heading">
+                <h1 align="center">etcd member 冲突的临时解决方法</h1>
+                
+                
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+
+    
+<div class="container" role="main" itemscope itemtype="http://schema.org/Article">
+    <div class="row">
+        <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+            
+            
+            
+<div>
+    <section id="datecount">
+        <h4 id="date"> Wed May 16, 2018</h4>
+    </section>
+    <h5 id="wc">600 Words|Read in about 2 Min</h5>
+    <h5 id="tags">Tags: 
+        
+        <a href="https://rootdeep.github.io/tags/kubernetes/">kubernetes</a> &nbsp;
+        
+        <a href="https://rootdeep.github.io/tags/etcd/">etcd</a> &nbsp;
+    </h5>
+</div>
+
+            
+            <article role="main" class="blog-post" itemprop="articleBody" id="content">
+                
+<aside class="toc">
+  
+</aside>
+
+
+                <p>近日，搭建了一个etcd 集群，在关闭了集群的一个节点之后，又重新创建了一个新的节点，并且新的节点依旧用原来的IP，但是在新的节点上启动etcd 服务的时候，发现服务起不来。查看日志，主要问题输出如下：</p>
+
+<p><img src="/etcd-member-conflict.png" alt="etcd-member-conflict" /></p>
+
+<p>看红色字体的提示，就是该IP 已经作为member 注册到 etcd discovery 服务中,但是本次该节点etcd 服务启动时，又没有在etcd 服务的数据目录找到集群信息。</p>
+
+<pre><code>member &quot;10.0.10.15&quot; has previously registered with discovery service token (http://10.127.3.110:8087/7477520eb71e7c
+Mar 23 05:23:09 yangle-test2-4y5uiiqiz42g-master-0.novalocal etcd[16227]: But etcd could not find valid cluster configuration in the given data dir (/var/lib/etcd/default.etcd).
+
+</code></pre>
+
+<p><strong>解决办法：</strong></p>
+
+<ol>
+<li><p>停止集群上所有节点的etcd 服务， 删除冲突节点上保存在${ETCD_DATA_DIR} 的数据</p></li>
+
+<li><p>在discovery 服务中删除冲突节点的信息。</p>
+
+<p>例如，在我的集群是采用私有的discovery 服务，discovery  url  是 : <code>http://10.127.3.110:8087/7477520eb71e7ca7dbcb2709227453e4</code></p>
+
+<p>删除冲突节点信息的具体解决过程是：</p>
+
+<ul>
+<li><p>先向该集群的discovery 发送一个GET请求, 查看member 组成。</p>
+
+<p><code>curl -X GET   http://10.127.3.110:8087/7477520eb71e7ca7dbcb2709227453e4</code></p>
+
+<p>结果如下</p>
+
+<pre><code> {
+  &quot;action&quot;: &quot;get&quot;,
+  &quot;node&quot;: {
+     &quot;key&quot;: &quot;/_etcd/registry/7477520eb71e7ca7dbcb2709227453e4&quot;,
+     &quot;dir&quot;: true,
+     &quot;nodes&quot;: [
+        {
+         &quot;key&quot;: &quot;/_etcd/registry/7477520eb71e7ca7dbcb2709227453e4/d9e6048794a9ede3&quot;,
+          &quot;value&quot;: &quot;10.0.10.6=https://10.0.10.6:2380&quot;,
+          &quot;modifiedIndex&quot;: 64,
+          &quot;createdIndex&quot;: 64
+        },
+        {
+          &quot;key&quot;: &quot;/_etcd/registry/7477520eb71e7ca7dbcb2709227453e4/bf841c5ec1d7b7e1&quot;,
+           &quot;value&quot;: &quot;10.0.10.14=https://10.0.10.14:2380&quot;,
+           &quot;modifiedIndex&quot;: 65,
+           &quot;createdIndex&quot;: 65
+        },
+        {
+          &quot;key&quot;: &quot;/_etcd/registry/7477520eb71e7ca7dbcb2709227453e4/8eee5f45a2fedb94&quot;,
+          &quot;value&quot;: &quot;10.0.10.15=https://10.0.10.15:2380&quot;,
+          &quot;modifiedIndex&quot;: 66,
+          &quot;createdIndex&quot;: 66
+        }
+     ],
+     &quot;modifiedIndex&quot;: 62,
+     &quot;createdIndex&quot;: 62
+  }
+}
+</code></pre>
+
+<p>从结果中可以发现，IP 为10.0.10.15 的节点的key 为 8eee5f45a2fedb94。</p></li>
+
+<li><p>然后，向discovery 发送一个DELETE请求, 删除该节点member</p>
+
+<p><code>curl -X DELETE http://10.127.3.110:8087/7477520eb71e7ca7dbcb2709227453e4/8eee5f45a2fedb94</code></p></li>
+</ul></li>
+
+<li><p>在新的节点上（IP 仍是 10.0.10.15）及其他节点重启etcd 服务。</p></li>
+</ol>
+
+            </article>
+
+            <ul class="pager blog-pager">
+                
+                <li class="previous">
+                    <a href="https://rootdeep.github.io/posts/create-vm-image-with-oz/" data-toggle="tooltip" data-placement="top" title="使用Oz工具自动化虚拟机镜像">&larr; Previous Post</a>
+                </li>
+                 
+                <li class="next">
+                    <a href="https://rootdeep.github.io/posts/simple-operation-of-helm-repo/" data-toggle="tooltip" data-placement="top" title="helm 自带私有仓库使用方法">Next Post &rarr;</a>
+                </li>
+                
+            </ul>
+            
+            <div>
+                 
+                <h2>See Also</h2>
+                <ul>
+                    
+                    <li><a href="/posts/volume-management-part1/">K8s 卷管理源码分析（一）</a></li>
+                    
+                </ul>
+                
+            </div>
+            
+            
+            
+            
+<div>
+    <section id="datecount">
+        <h4 id="date"> Wed May 16, 2018</h4>
+    </section>
+    <h5 id="wc">600 Words|Read in about 2 Min</h5>
+    <h5 id="tags">Tags: 
+        
+        <a href="https://rootdeep.github.io/tags/kubernetes/">kubernetes</a> &nbsp;
+        
+        <a href="https://rootdeep.github.io/tags/etcd/">etcd</a> &nbsp;
+    </h5>
+</div>
+
+            
+            </div>
+            
+            
+                
+                 <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+<aside id=comments>
+     
+    <div>
+        <h2> Comments </h2>
+    </div>
+    <div id="container"></div>
+    <link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
+    <script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+    <script>
+        var gitment = new Gitment({
+					    id: "etcd member 冲突的临时解决方法",
+                        owner: 'rootdeep', 
+                        repo: 'rootdeep.github.io', 
+                        oauth: {
+                            client_id: 'a45f8ab669362a110f83',
+                            client_secret: '925eb6e429ff5eb575823cd6a7e193dcad2a61f4',
+                        },
+                    })
+        gitment.render('container')
+    </script>
+	
+    
+</aside>
+
+                
+            
+        </div>
+    </div>
+    </section>
+</div>
+
+    <footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <ul class="list-inline text-center footer-links">
+          
+              <li>
+                <a href="https://github.com/rootdeep" title="GitHub">
+                  <span class="fa-stack fa-lg">
+                    <i class="fa fa-circle fa-stack-2x"></i>
+                    <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+          
+        </ul>
+        <p class="credits copyright text-muted">
+        &copy;2017
+          
+            
+              <a href="https://rootdeep.github.io/">Zhiguo Li</a>
+            
+          
+          &nbsp;&bull;&nbsp;
+          June 23,2018
+          updated
+          
+            &nbsp;&bull;&nbsp;
+            <a href="https://rootdeep.github.io/">RootDeep</a>
+          
+        </p>
+        
+        <p class="credits theme-by text-muted">
+          <a href="http://gohugo.io">Hugo v0.37</a> powered &nbsp;&bull;&nbsp; Theme by <a href="http://deanattali.com/beautiful-jekyll/">Beautiful Jekyll</a> adapted to <a href="https://github.com/rootsongjc/beautifulhugo">Beautiful Hugo</a>
+          
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.7.1/katex.min.js" integrity="sha384-/y1Nn9+QQAipbNQWU65krzJralCnuOasHncUFXGkdwntGeSvQicrYkiUBwsgUqc1" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.7.1/contrib/auto-render.min.js" integrity="sha384-dq1/gEHSxPZQ7DdrM82ID4YVol9BYyU7GbWlIwnwyPzotpoc57wDw/guX8EaYGPx" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+<script src="https://rootdeep.github.io/js/main.js"></script>
+
+<script> renderMathInElement(document.body); </script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.1/photoswipe.min.js" integrity="sha256-UplRCs9v4KXVJvVY+p+RSo5Q4ilAUXh7kpjyIP5odyc=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.1/photoswipe-ui-default.min.js" integrity="sha256-PWHOlUzc96pMc8ThwRIXPn8yH4NOLu42RQ0b9SpnpFk=" crossorigin="anonymous"></script>
+<script src="https://rootdeep.github.io/js/load-photoswipe.js"></script>
+<script src="https://rootdeep.github.io/js/prism.js"></script>
+
+
+<script src="https://rootdeep.github.io/js/prism.js"></script>
+
+
+  </body>
+</html>
+

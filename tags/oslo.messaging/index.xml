@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Oslo.messaging on RootDeep</title>
+    <link>https://rootdeep.github.io/tags/oslo.messaging/</link>
+    <description>Recent content in Oslo.messaging on RootDeep</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh</language>
+    <lastBuildDate>Sat, 23 Jun 2018 11:18:57 +0800</lastBuildDate>
+    
+	<atom:link href="https://rootdeep.github.io/tags/oslo.messaging/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Rabbit Driver Connection 创建流程</title>
+      <link>https://rootdeep.github.io/posts/rpc-rabbit-con-in-oslo-messaging/</link>
+      <pubDate>Sat, 23 Jun 2018 11:18:57 +0800</pubDate>
+      
+      <guid>https://rootdeep.github.io/posts/rpc-rabbit-con-in-oslo-messaging/</guid>
+      <description>本节主要分析了RabbitDriver中Connection类的初始化过程中，一个TCP 连接过程中调用代码的流程。流程深入到了kombu 库的</description>
+    </item>
+    
+    <item>
+      <title>OpenStack RPC Call/CAST 调用流程</title>
+      <link>https://rootdeep.github.io/posts/rpc-call-procedure-in-oslo-messaging/</link>
+      <pubDate>Thu, 21 Jun 2018 09:18:57 +0800</pubDate>
+      
+      <guid>https://rootdeep.github.io/posts/rpc-call-procedure-in-oslo-messaging/</guid>
+      <description>最近遇到了一个关于nova 组件调用oslo.messaging 库代码出现异常的问题。抛出的异常，大概描述如下 2018-06-13 11:06:33.927 8965 ERROR oslo.messaging._drivers.impl_rabbit [req-6d5699d8-63be-4bba-b2e2-fe7f53dc2699 4f1b9c862dfa4191b61370b72e04795d 3b9839f8a90f47faa6566ef473b77593 - default default] Failed to publish message to</description>
+    </item>
+    
+  </channel>
+</rss>
