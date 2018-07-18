@@ -6,19 +6,10 @@
     <description>Recent content in Kubernetes on RootDeep</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
-    <lastBuildDate>Thu, 21 Jun 2018 09:18:57 +0800</lastBuildDate>
+    <lastBuildDate>Fri, 15 Jun 2018 20:18:57 +0800</lastBuildDate>
     
 	<atom:link href="https://rootdeep.github.io/categories/kubernetes/index.xml" rel="self" type="application/rss+xml" />
     
-    
-    <item>
-      <title>OpenStack RPC Call/CAST 调用流程</title>
-      <link>https://rootdeep.github.io/posts/rpc-call-procedure-in-oslo-messaging/</link>
-      <pubDate>Thu, 21 Jun 2018 09:18:57 +0800</pubDate>
-      
-      <guid>https://rootdeep.github.io/posts/rpc-call-procedure-in-oslo-messaging/</guid>
-      <description>最近遇到了一个关于nova 组件调用oslo.messaging 库代码出现异常的问题。抛出的异常，大概描述如下 2018-06-13 11:06:33.927 8965 ERROR oslo.messaging._drivers.impl_rabbit [req-6d5699d8-63be-4bba-b2e2-fe7f53dc2699 4f1b9c862dfa4191b61370b72e04795d 3b9839f8a90f47faa6566ef473b77593 - default default] Failed to publish message to</description>
-    </item>
     
     <item>
       <title>K8s 卷在线扩容调研</title>

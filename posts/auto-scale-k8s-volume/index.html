@@ -275,28 +275,28 @@
 
 <p>默认k8s 不开启该功能，需要做些配置才能使用。具体的步骤如下</p>
 
-<ol>
+<ul>
 <li>修改api-server 配置文件，添加准入控制规则 PersistentVolumeClaimResize ，并打开ExpandPersistentVolumes  特性开关，相关修改如下：</li>
-</ol>
+</ul>
 
-<pre><code>   sudo vim /etc/kubernetes/apiserver
-   # default admission control policies
-     KUBE_ADMISSION_CONTROL=&quot;--admission-control=PersistentVolumeClaimResize,Initializers,
-    NamespaceLifecycle,LimitRanger,ServiceAccount,DefaultStorageClass,DefaultTolerationSeconds,
-     NodeRestriction,ResourceQuota&quot;
-     --feature-gates=ExpandPersistentVolumes=true
+<pre><code>sudo vim /etc/kubernetes/apiserver
+# default admission control policies
+  KUBE_ADMISSION_CONTROL=&quot;--admission-control=PersistentVolumeClaimResize,Initializers,
+ NamespaceLifecycle,LimitRanger,ServiceAccount,DefaultStorageClass,DefaultTolerationSeconds,
+  NodeRestriction,ResourceQuota&quot;
+  --feature-gates=ExpandPersistentVolumes=true
 </code></pre>
 
-<ol>
+<ul>
 <li>修改controller 配置文件，打开ExpandPersistentVolumes  特性开关</li>
-</ol>
+</ul>
 
-<pre><code>   --feature-gates=ExpandPersistentVolumes=true
+<pre><code>--feature-gates=ExpandPersistentVolumes=true
 </code></pre>
 
-<ol>
+<ul>
 <li>重启api-server 和 controller 服务。</li>
-</ol>
+</ul>
 
 <h1 id="修改storageclass-yaml-文件">修改StorageClass yaml 文件</h1>
 
@@ -387,12 +387,8 @@ status:
 <p>核心步骤是：</p>
 
 <ol>
-<li>扩容容器卷在主机上的对应的块设备，即找到该块设备对应的cinder卷，对cinder卷扩容。</li>
-</ol>
+<li><p>扩容容器卷在主机上的对应的块设备，即找到该块设备对应的cinder卷，对cinder卷扩容。此时，可以在主机上看到块设备容量已经变化（通过fdisk 命令），但是文件系统的大小并没有变化（通过df -h 命令）。</p></li>
 
-<p>此时，可以在主机上看到块设备容量已经变化（通过fdisk 命令），但是文件系统的大小并没有变化（通过df -h 命令）。</p>
-
-<ol>
 <li><p>使用resize2fs 命名 操作块设备（块设备的文件系统是etx4)</p></li>
 
 <li><p>使用 df -h 命令可以看到对应块设备大小已经调整，容器里挂载的卷也正确显示大小。</p></li>
