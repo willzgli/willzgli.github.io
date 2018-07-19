@@ -114,12 +114,6 @@
       <ul class="nav navbar-nav navbar-right">
         
           
-            <li>
-              <a title="Home" href="/">Home</a>
-            </li>
-          
-        
-          
             <li class="navlinks-container">
               <a class="navlinks-parent" href="javascript:void(0)">Categories</a>
               <div class="navlinks-children">
@@ -155,7 +149,7 @@
         
           
             <li>
-              <a title="About" href="/about">About</a>
+              <a title="About" href="/about/">About</a>
             </li>
           
         
@@ -201,7 +195,7 @@
             
           <div class="col-lg-12 col-md-12 col-md-offset-0">
             <div class="posts-heading">
-                <h1 align="center">使用Oz工具自动化虚拟机镜像</h1>
+				<h1 align="center"  style="font-size:40px;">使用Oz工具自动化虚拟机镜像</h1>
                 
                   
                     <h2 align="center" class="posts-subheading">一次Oz工具的学习及使用实践</h2>
@@ -246,11 +240,11 @@
 <ul>
 <li>
 <ul>
-<li><a href="#oz-简介"><strong>Oz 简介</strong></a></li>
-<li><a href="#准备制作环境"><strong>准备制作环境</strong></a></li>
-<li><a href="#配置oz"><strong>配置Oz</strong></a></li>
-<li><a href="#制作镜像"><strong>制作镜像</strong></a></li>
-<li><a href="#验证镜像"><strong>验证镜像</strong></a></li>
+<li><a href="#oz-简介">Oz 简介</a></li>
+<li><a href="#准备制作环境">准备制作环境</a></li>
+<li><a href="#配置oz">配置Oz</a></li>
+<li><a href="#制作镜像">制作镜像</a></li>
+<li><a href="#验证镜像">验证镜像</a></li>
 <li><a href="#遇到的问题">遇到的问题</a></li>
 </ul></li>
 </ul>
@@ -260,7 +254,7 @@
 
                 
 
-<h2 id="oz-简介"><strong>Oz 简介</strong></h2>
+<h2 id="oz-简介">Oz 简介</h2>
 
 <p>镜像制作一般分为手动制作和自动制作。</p>
 
@@ -297,7 +291,7 @@
 
 <p>下面以制作一个简单的虚拟机镜像为例，说明定制化虚拟机镜像的制作流程。</p>
 
-<h2 id="准备制作环境"><strong>准备制作环境</strong></h2>
+<h2 id="准备制作环境">准备制作环境</h2>
 
 <p>本次制作镜像的HOST 机器是在VMware上建立的一个虚拟机。安装虚拟机用到的镜像版本为：CentOS-7-x86_64-DVD-1708.iso。省略HOST 虚拟机安装步骤。</p>
 
@@ -349,7 +343,7 @@
 
 <p><code># yum install qemu-system-x86  #安装此工具，稍后用于自验制作的镜像是否能启动</code></p>
 
-<h2 id="配置oz"><strong>配置Oz</strong></h2>
+<h2 id="配置oz">配置Oz</h2>
 
 <p>oz默认生成的镜像为raw格式，我们切换为qcow2。qcow2 格式的文件虽然在性能上比Raw 格式的有一些损失（主要体现在对于文件增量上，qcow2 格式的文件为了分配 cluster 多花费了一些时间），但是 qcow2 格式的镜像比 Raw 格式文件更小，只有在虚拟机实际占用了磁盘空间时，其文件才会增长，能方便的减少迁移花费的流量，更适用于云计算系统，同时，它还具有加密，压缩，以及快照等 raw 格式不具有的功能。</p>
 
@@ -380,7 +374,7 @@ safe_generation = no
 
 <p>Oz 配置介绍：<a href="https://github.com/clalancette/oz/wiki/oz-install">https://github.com/clalancette/oz/wiki/oz-install</a></p>
 
-<h2 id="制作镜像"><strong>制作镜像</strong></h2>
+<h2 id="制作镜像">制作镜像</h2>
 
 <p><strong>编写TDL文件</strong></p>
 
@@ -565,7 +559,7 @@ EOF
 
 <p><code># oz-install -p -u -d3 -a centos7.ks centos7.tdl</code></p>
 
-<h2 id="验证镜像"><strong>验证镜像</strong></h2>
+<h2 id="验证镜像">验证镜像</h2>
 
 <p>镜像创建完成后，镜像会保存在/var/lib/libvirt/images/下。我们可以通过以下命令先在节点A尝试启动镜像，验证制作是否成功。启动前，先备份镜像，并且使用qemu-system-x86_64 启动竟像时，需要在本地配置VNC viewer client 及在节点A配置VNC server。</p>
 
@@ -712,7 +706,7 @@ for file in os.listdir(path):
           
         </ul>
         <p class="credits copyright text-muted">
-        &copy;2017
+        &copy;2018
           
             
               <a href="https://rootdeep.github.io/">Zhiguo Li</a>
@@ -721,10 +715,6 @@ for file in os.listdir(path):
           &nbsp;&bull;&nbsp;
           June 23,2018
           updated
-          
-            &nbsp;&bull;&nbsp;
-            <a href="https://rootdeep.github.io/">RootDeep</a>
-          
         </p>
         
         <p class="credits theme-by text-muted">

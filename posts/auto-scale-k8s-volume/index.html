@@ -114,12 +114,6 @@
       <ul class="nav navbar-nav navbar-right">
         
           
-            <li>
-              <a title="Home" href="/">Home</a>
-            </li>
-          
-        
-          
             <li class="navlinks-container">
               <a class="navlinks-parent" href="javascript:void(0)">Categories</a>
               <div class="navlinks-children">
@@ -155,7 +149,7 @@
         
           
             <li>
-              <a title="About" href="/about">About</a>
+              <a title="About" href="/about/">About</a>
             </li>
           
         
@@ -201,7 +195,7 @@
             
           <div class="col-lg-12 col-md-12 col-md-offset-0">
             <div class="posts-heading">
-                <h1 align="center">K8s 卷在线扩容调研</h1>
+				<h1 align="center"  style="font-size:40px;">K8s 卷在线扩容调研</h1>
                 
                 
             </div>
@@ -240,7 +234,7 @@
 <aside class="toc">
   <nav id="TableOfContents">
 <ul>
-<li><a href="#配置k8s"><strong>配置k8s</strong></a></li>
+<li><a href="#配置k8s">配置k8s</a></li>
 <li><a href="#修改storageclass-yaml-文件">修改StorageClass yaml 文件</a></li>
 <li><a href="#解绑pod">解绑POD</a></li>
 <li><a href="#编辑pvc">编辑PVC</a></li>
@@ -271,7 +265,7 @@
 
 <p>通过搭建1.9.5版本K8s集群，发现截止该版本，实际上提供的卷扩容功能还比较弱，还得把处于&rdquo;in-use&rdquo; 状态的卷变成&rdquo;available&rdquo; 状态。整个扩容操作流程如下：</p>
 
-<h1 id="配置k8s"><strong>配置k8s</strong></h1>
+<h1 id="配置k8s">配置k8s</h1>
 
 <p>默认k8s 不开启该功能，需要做些配置才能使用。具体的步骤如下</p>
 
@@ -400,6 +394,8 @@ status:
 <li><p>再次使用<code>kubectl get</code>命令查看PVC/PV 的大小。</p></li>
 </ol>
 
+<p>​</p>
+
 <h1 id="版本演进">版本演进</h1>
 
 <p>在 v1.11  alpha  版本中，将实线一个真实的在线卷扩容方法，即可以将处于“in-use&rdquo; 状态的卷直接进行扩容，而不要提前和POD解绑。</p>
@@ -494,7 +490,7 @@ status:
           
         </ul>
         <p class="credits copyright text-muted">
-        &copy;2017
+        &copy;2018
           
             
               <a href="https://rootdeep.github.io/">Zhiguo Li</a>
@@ -503,10 +499,6 @@ status:
           &nbsp;&bull;&nbsp;
           June 23,2018
           updated
-          
-            &nbsp;&bull;&nbsp;
-            <a href="https://rootdeep.github.io/">RootDeep</a>
-          
         </p>
         
         <p class="credits theme-by text-muted">

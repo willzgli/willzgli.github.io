@@ -59,7 +59,12 @@
   
   <url>
     <loc>https://rootdeep.github.io/posts/volume-management-part1/</loc>
-    <lastmod>2017-06-01T20:18:57+08:00</lastmod>
+    <lastmod>2017-06-01T12:18:57+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://rootdeep.github.io/</loc>
+    <lastmod>2014-04-09T00:00:00+00:00</lastmod>
   </url>
   
   <url>
@@ -190,12 +195,6 @@
   <url>
     <loc>https://rootdeep.github.io/tags/resize/</loc>
     <lastmod>2018-06-15T20:18:57+08:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://rootdeep.github.io/</loc>
-    <lastmod>2014-04-09T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
