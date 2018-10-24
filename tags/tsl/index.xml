@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Tsl on RootDeep</title>
+    <link>https://rootdeep.github.io/tags/tsl/</link>
+    <description>Recent content in Tsl on RootDeep</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh</language>
+    <lastBuildDate>Wed, 03 Oct 2018 14:03:57 +0800</lastBuildDate>
+    
+	<atom:link href="https://rootdeep.github.io/tags/tsl/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>理解数字证书及制作过程</title>
+      <link>https://rootdeep.github.io/posts/ssl/</link>
+      <pubDate>Wed, 03 Oct 2018 14:03:57 +0800</pubDate>
+      
+      <guid>https://rootdeep.github.io/posts/ssl/</guid>
+      <description>使用Https协议访问时，会碰到证书的问题。有时候开发https 相关的程序时，也需要自制证书。制作证书时，总是需要 .key, .csr, . crt 三类文件。 并且，对</description>
+    </item>
+    
+  </channel>
+</rss>
