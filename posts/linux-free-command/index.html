@@ -334,23 +334,23 @@ Swap:          2.0G        82M         1.9G
 
 <p>linux提供一种“临时”文件系统叫做tmpfs，它可以将内存的一部分空间拿来当做文件系统使用，使内存空间可以当做目录文件来用。现在绝大多数Linux系统都有一个叫做/dev/shm的tmpfs目录，就是这样一种存在。当然，我们也可以手工创建一个自己的tmpfs，方法如下：</p>
 
-<p><img src="C:UserslenovoAppDataLocalkingsoftWPS Cloud Filesuserdataqingfilecache问的云文档Linux-Cache-Analysismount_tmpfs.png" alt="mount_tmpfs" /></p>
+<p><img src="/Linux-Cache-Analysis/mount_tmpfs.png" alt="mount_tmpfs" /></p>
 
 <p>上图创建了一个大小为10G 的tmpfs。我们可以在/tmp/tmpfs中创建一个10G以内的文件，文件实际占用的空间是内存空间。因为实验环境中用到的内存总大小只有1G，所以实验中，我们用dd 命令创建了一个300M 大小的文件。</p>
 
-<p><img src="C:UserslenovoAppDataLocalkingsoftWPS Cloud Filesuserdataqingfilecache问的云文档Linux-Cache-Analysiswrite_tmpfs.png" alt="mount_tmpfs" /></p>
+<p><img src="/Linux-Cache-Analysis/write_tmpfs.png" alt="mount_tmpfs" /></p>
 
 <p>从上图中，可以看到 buff/cache 部分确实是增长了300M，并且，shared 的部分也增加了300M, 并且available 的值减少了300M。但该文件具体是用的是buff方式存储 ,还是cache方式存储， 用atop 工具进一步查看内存使用情况,命令：<code>atop -l</code></p>
 
-<p><img src="C:UserslenovoAppDataLocalkingsoftWPS Cloud Filesuserdataqingfilecache问的云文档Linux-Cache-Analysisatop.png" alt="mount_tmpfs" /></p>
+<p><img src="/Linux-Cache-Analysis/atop.png" alt="mount_tmpfs" /></p>
 
 <p>上图中可以看到buff部分的大小是0, cache 占用较多（cache 不一致时因为刚才用该环境做了其他操作，如安装atop 工具），说明刚才使用dd 命令生成的文件确实放在了内存里并且内核使用的是cache作为存储。那么这部分cache能够被手动释放吗？</p>
 
-<p><img src="C:UserslenovoAppDataLocalkingsoftWPS Cloud Filesuserdataqingfilecache问的云文档Linux-Cache-Analysisdrop_cache.png" alt="drop_cache" /></p>
+<p><img src="/Linux-Cache-Analysis/drop_cache.png" alt="drop_cache" /></p>
 
 <p>可以看到，buff/cache 部分并没有释放多少，shared 的大小也没有变化。<strong>那么tmpfs占用的cache空间什么时候会被释放呢？是在其文件被删除的时候.</strong>如果不删除文件，无论内存耗尽到什么程度，内核都不会自动帮你把tmpfs中的文件删除来释放cache空间。</p>
 
-<p><img src="C:UserslenovoAppDataLocalkingsoftWPS Cloud Filesuserdataqingfilecache问的云文档Linux-Cache-Analysisrm_testfile.png" alt="rm_tmpfs" /></p>
+<p><img src="/Linux-Cache-Analysis/rm_testfile.png" alt="rm_tmpfs" /></p>
 
 <p>可以看到，删除testfile后，shared的部分减少了300M， buff/cache 部分接近300M。但是发现一个奇怪的问题，为什么available的值比free 还小一点呢？</p>
 
@@ -442,15 +442,15 @@ main()
 
 <p>程序功能很简单，就是申请一段300M的共享内存，然后打开一个子进程对这段共享内存做一个初始化操作，父进程等子进程初始化完之后输出一下共享内存的内容，然后退出。但是退出之前并没有删除这段共享内存。我们来看看这个程序执行前后的内存使用：</p>
 
-<p><img src="C:UserslenovoAppDataLocalkingsoftWPS Cloud Filesuserdataqingfilecache问的云文档Linux-Cache-Analysisrun_shm.png" alt="run_shm" /></p>
+<p><img src="/Linux-Cache-Analysis/run_shm.png" alt="run_shm" /></p>
 
 <p>同样，可以看到程序执行后，shared ,buff/cache 部分增加了300M。那么这段cache能被回收么？继续测试：</p>
 
-<p><img src="C:UserslenovoAppDataLocalkingsoftWPS Cloud Filesuserdataqingfilecache问的云文档Linux-Cache-Analysisfree_shm.png" alt="free_shm" /></p>
+<p><img src="/Linux-Cache-Analysis/free_shm.png" alt="free_shm" /></p>
 
 <p>可以观察到，人工释放的效果不明显，buff/cache 几乎没变。所以这段共享内存即使没人使用，仍然会长期存放在cache中，直到其被删除。删除方法有两种，一种是程序中使用shmdt()，另一种是使用ipcrm命令。我们来删除试试：</p>
 
-<p><img src="C:UserslenovoAppDataLocalkingsoftWPS Cloud Filesuserdataqingfilecache问的云文档Linux-Cache-Analysisipcrm_shm.png" alt="ipcrm_shm" /></p>
+<p><img src="/Linux-Cache-Analysis/ipcrm_shm.png" alt="ipcrm_shm" /></p>
 
 <p>删除共享内存后，cache被正常释放了。这个行为与tmpfs的逻辑类似。内核底层在实现共享内存（shm）、消息队列（msg）和信号量数组（sem）这些POSIX:XSI的IPC机制的内存存储时，使用的都是tmpfs。这也是为什么共享内存的操作逻辑与tmpfs类似的原因。当然，一般情况下是shm占用的内存更多，所以我们在此重点强调共享内存的使用。说到共享内存，Linux还给我们提供了另外一种共享内存的方法，就是：</p>
 
@@ -513,15 +513,15 @@ int main()
 
 <p>这次我们干脆不用什么父子进程的方式了，就一个进程，申请一段30M 的mmap共享内存，然后初始化这段空间之后等待100秒，再解除影射，所以我们需要在它sleep这100秒内检查我们的系统内存使用，看看它用的是什么空间？当然在这之前要先创建一个300G的文件./mmapfile。结果如下：</p>
 
-<p><img src="C:UserslenovoAppDataLocalkingsoftWPS Cloud Filesuserdataqingfilecache问的云文档Linux-Cache-Analysisdd_mmap.png" alt="dd_mmap" /></p>
+<p><img src="/Linux-Cache-Analysis/dd_mmap.png" alt="dd_mmap" /></p>
 
 <p>然后执行测试程序</p>
 
-<p><img src="C:UserslenovoAppDataLocalkingsoftWPS Cloud Filesuserdataqingfilecache问的云文档Linux-Cache-Analysisrun_test.png" alt="run_test" /></p>
+<p><img src="/Linux-Cache-Analysis/run_test.png" alt="run_test" /></p>
 
 <p>我们可以看到，在程序执行期间，cached一直为543M(542M)，比之前涨了300M，并且此时这段cache仍然无法被回收。然后我们等待100秒之后程序结束。</p>
 
-<p><img src="C:UserslenovoAppDataLocalkingsoftWPS Cloud Filesuserdataqingfilecache问的云文档Linux-Cache-Analysistest_result.png" alt="test_result" /></p>
+<p><img src="/Linux-Cache-Analysis/test_result.png" alt="test_result" /></p>
 
 <p>程序运行结束之时，使用unmap，释放cached占用的空间被释放。这样我们可以看到，使用mmap申请标志状态为MAP_SHARED的内存，内核也是使用的cache进行存储的。在进程对相关内存没有释放之前，这段cache也是不能被正常释放的。实际上，mmap的MAP_SHARED方式申请的内存，在内核中也是由tmpfs实现的。由此我们也可以推测，由于共享库的只读部分在内存中都是以mmap的MAP_SHARED方式进行管理，实际上它们也都是要占用cache且无法被释放的。</p>
 
