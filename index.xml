@@ -21,6 +21,15 @@
     </item>
     
     <item>
+      <title>kube-proxy 源码分析</title>
+      <link>https://rootdeep.github.io/posts/kube-proxy-code-analysis/</link>
+      <pubDate>Tue, 25 Dec 2018 10:22:57 +0800</pubDate>
+      
+      <guid>https://rootdeep.github.io/posts/kube-proxy-code-analysis/</guid>
+      <description>功能概述 kube-proxy是管理service的访问入口，包括集群内Pod到Service的访问和集群外访问service。当用户创建 service 的</description>
+    </item>
+    
+    <item>
       <title>Linux Free 命令浅析</title>
       <link>https://rootdeep.github.io/posts/linux-free-command/</link>
       <pubDate>Fri, 05 Oct 2018 03:03:57 +0800</pubDate>

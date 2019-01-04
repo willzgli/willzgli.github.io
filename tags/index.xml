@@ -57,11 +57,29 @@
     </item>
     
     <item>
+      <title>Iptables</title>
+      <link>https://rootdeep.github.io/tags/iptables/</link>
+      <pubDate>Tue, 25 Dec 2018 10:22:57 +0800</pubDate>
+      
+      <guid>https://rootdeep.github.io/tags/iptables/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>K8s</title>
       <link>https://rootdeep.github.io/tags/k8s/</link>
       <pubDate>Fri, 15 Jun 2018 20:18:57 +0800</pubDate>
       
       <guid>https://rootdeep.github.io/tags/k8s/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Kube Proxy</title>
+      <link>https://rootdeep.github.io/tags/kube-proxy/</link>
+      <pubDate>Tue, 25 Dec 2018 10:22:57 +0800</pubDate>
+      
+      <guid>https://rootdeep.github.io/tags/kube-proxy/</guid>
       <description></description>
     </item>
     
@@ -179,6 +197,15 @@
       <pubDate>Wed, 03 Oct 2018 14:03:57 +0800</pubDate>
       
       <guid>https://rootdeep.github.io/tags/tsl/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>V1.12</title>
+      <link>https://rootdeep.github.io/tags/v1.12/</link>
+      <pubDate>Tue, 25 Dec 2018 10:22:57 +0800</pubDate>
+      
+      <guid>https://rootdeep.github.io/tags/v1.12/</guid>
       <description></description>
     </item>
     

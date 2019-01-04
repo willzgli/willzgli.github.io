@@ -8,6 +8,11 @@
   </url>
   
   <url>
+    <loc>https://rootdeep.github.io/posts/kube-proxy-code-analysis/</loc>
+    <lastmod>2018-12-25T10:22:57+08:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://rootdeep.github.io/posts/linux-free-command/</loc>
     <lastmod>2018-10-05T03:03:57+08:00</lastmod>
   </url>
@@ -119,20 +124,32 @@
   </url>
   
   <url>
+    <loc>https://rootdeep.github.io/tags/iptables/</loc>
+    <lastmod>2018-12-25T10:22:57+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>https://rootdeep.github.io/tags/k8s/</loc>
     <lastmod>2018-06-15T20:18:57+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://rootdeep.github.io/tags/kubernetes/</loc>
-    <lastmod>2018-05-16T14:03:57+08:00</lastmod>
+    <loc>https://rootdeep.github.io/tags/kube-proxy/</loc>
+    <lastmod>2018-12-25T10:22:57+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://rootdeep.github.io/categories/kubernetes/</loc>
-    <lastmod>2018-06-15T20:18:57+08:00</lastmod>
+    <lastmod>2018-12-25T10:22:57+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://rootdeep.github.io/tags/kubernetes/</loc>
+    <lastmod>2018-05-16T14:03:57+08:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -167,13 +184,13 @@
   </url>
   
   <url>
-    <loc>https://rootdeep.github.io/tags/openstack/</loc>
+    <loc>https://rootdeep.github.io/categories/openstack/</loc>
     <lastmod>2018-06-23T11:18:57+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://rootdeep.github.io/categories/openstack/</loc>
+    <loc>https://rootdeep.github.io/tags/openstack/</loc>
     <lastmod>2018-06-23T11:18:57+08:00</lastmod>
     <priority>0</priority>
   </url>
@@ -198,7 +215,7 @@
   
   <url>
     <loc>https://rootdeep.github.io/posts/</loc>
-    <lastmod>2018-10-05T03:03:57+08:00</lastmod>
+    <lastmod>2018-12-25T10:22:57+08:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -229,6 +246,12 @@
   <url>
     <loc>https://rootdeep.github.io/tags/tsl/</loc>
     <lastmod>2018-10-03T14:03:57+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://rootdeep.github.io/tags/v1.12/</loc>
+    <lastmod>2018-12-25T10:22:57+08:00</lastmod>
     <priority>0</priority>
   </url>
   
