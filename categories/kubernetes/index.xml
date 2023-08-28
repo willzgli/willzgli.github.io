@@ -2,57 +2,57 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Kubernetes on RootDeep</title>
-    <link>https://rootdeep.github.io/categories/kubernetes/</link>
+    <link>https://willzgli.github.io/categories/kubernetes/</link>
     <description>Recent content in Kubernetes on RootDeep</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
     <lastBuildDate>Tue, 25 Dec 2018 10:22:57 +0800</lastBuildDate>
     
-	<atom:link href="https://rootdeep.github.io/categories/kubernetes/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://willzgli.github.io/categories/kubernetes/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>kube-proxy 源码分析</title>
-      <link>https://rootdeep.github.io/posts/kube-proxy-code-analysis/</link>
+      <link>https://willzgli.github.io/posts/kube-proxy-code-analysis/</link>
       <pubDate>Tue, 25 Dec 2018 10:22:57 +0800</pubDate>
       
-      <guid>https://rootdeep.github.io/posts/kube-proxy-code-analysis/</guid>
+      <guid>https://willzgli.github.io/posts/kube-proxy-code-analysis/</guid>
       <description>功能概述 kube-proxy是管理service的访问入口，包括集群内Pod到Service的访问和集群外访问service。当用户创建 service 的</description>
     </item>
     
     <item>
       <title>K8s 卷在线扩容调研</title>
-      <link>https://rootdeep.github.io/posts/auto-scale-k8s-volume/</link>
+      <link>https://willzgli.github.io/posts/auto-scale-k8s-volume/</link>
       <pubDate>Fri, 15 Jun 2018 20:18:57 +0800</pubDate>
       
-      <guid>https://rootdeep.github.io/posts/auto-scale-k8s-volume/</guid>
+      <guid>https://willzgli.github.io/posts/auto-scale-k8s-volume/</guid>
       <description>自己遇到了一个扩容在线卷（已绑定到POD的卷的）的需求。调研了一番，发现在k8s 1.8 alpha版本中，提供了一种卷扩容的方法，并且支持扩容的卷</description>
     </item>
     
     <item>
       <title>helm 自带私有仓库使用方法</title>
-      <link>https://rootdeep.github.io/posts/simple-operation-of-helm-repo/</link>
+      <link>https://willzgli.github.io/posts/simple-operation-of-helm-repo/</link>
       <pubDate>Wed, 16 May 2018 14:03:57 +0800</pubDate>
       
-      <guid>https://rootdeep.github.io/posts/simple-operation-of-helm-repo/</guid>
+      <guid>https://willzgli.github.io/posts/simple-operation-of-helm-repo/</guid>
       <description>安装helm 客户端后，使用 helm serve 命令可以在本地启动一个私有仓库。 通过helm repo list 可以看到一个仓库名，及仓库地址为: local http://127.0.0.1/charts helm serve 的启动命令参数如下：</description>
     </item>
     
     <item>
       <title>etcd member 冲突的临时解决方法</title>
-      <link>https://rootdeep.github.io/posts/fix-stale-node-in-etcd-cluster/</link>
+      <link>https://willzgli.github.io/posts/fix-stale-node-in-etcd-cluster/</link>
       <pubDate>Wed, 16 May 2018 10:22:57 +0800</pubDate>
       
-      <guid>https://rootdeep.github.io/posts/fix-stale-node-in-etcd-cluster/</guid>
+      <guid>https://willzgli.github.io/posts/fix-stale-node-in-etcd-cluster/</guid>
       <description>近日，搭建了一个etcd 集群，在关闭了集群的一个节点之后，又重新创建了一个新的节点，并且新的节点依旧用原来的IP，但是在新的节点上启动etc</description>
     </item>
     
     <item>
       <title>K8s 卷管理源码分析（一）</title>
-      <link>https://rootdeep.github.io/posts/volume-management-part1/</link>
+      <link>https://willzgli.github.io/posts/volume-management-part1/</link>
       <pubDate>Thu, 01 Jun 2017 12:18:57 +0800</pubDate>
       
-      <guid>https://rootdeep.github.io/posts/volume-management-part1/</guid>
+      <guid>https://willzgli.github.io/posts/volume-management-part1/</guid>
       <description>各组件功能： Volume Plugins 存储提供的扩展接口, 包含了各类存储提供者的plugin实现。 实现自定义的Plugins 可以通过FlexVolume(K8s 1</description>
     </item>
     

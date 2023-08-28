@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Resize on RootDeep</title>
-    <link>https://rootdeep.github.io/tags/resize/</link>
+    <link>https://willzgli.github.io/tags/resize/</link>
     <description>Recent content in Resize on RootDeep</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
     <lastBuildDate>Fri, 15 Jun 2018 20:18:57 +0800</lastBuildDate>
     
-	<atom:link href="https://rootdeep.github.io/tags/resize/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://willzgli.github.io/tags/resize/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>K8s 卷在线扩容调研</title>
-      <link>https://rootdeep.github.io/posts/auto-scale-k8s-volume/</link>
+      <link>https://willzgli.github.io/posts/auto-scale-k8s-volume/</link>
       <pubDate>Fri, 15 Jun 2018 20:18:57 +0800</pubDate>
       
-      <guid>https://rootdeep.github.io/posts/auto-scale-k8s-volume/</guid>
+      <guid>https://willzgli.github.io/posts/auto-scale-k8s-volume/</guid>
       <description>自己遇到了一个扩容在线卷（已绑定到POD的卷的）的需求。调研了一番，发现在k8s 1.8 alpha版本中，提供了一种卷扩容的方法，并且支持扩容的卷</description>
     </item>
     

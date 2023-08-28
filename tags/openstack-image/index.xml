@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Openstack Image on RootDeep</title>
-    <link>https://rootdeep.github.io/tags/openstack-image/</link>
+    <link>https://willzgli.github.io/tags/openstack-image/</link>
     <description>Recent content in Openstack Image on RootDeep</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
     <lastBuildDate>Thu, 07 Jun 2018 19:05:57 +0800</lastBuildDate>
     
-	<atom:link href="https://rootdeep.github.io/tags/openstack-image/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://willzgli.github.io/tags/openstack-image/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>手动制作OpenStack 虚拟机镜像</title>
-      <link>https://rootdeep.github.io/posts/make-openstack-image-manully/</link>
+      <link>https://willzgli.github.io/posts/make-openstack-image-manully/</link>
       <pubDate>Thu, 07 Jun 2018 19:05:57 +0800</pubDate>
       
-      <guid>https://rootdeep.github.io/posts/make-openstack-image-manully/</guid>
+      <guid>https://willzgli.github.io/posts/make-openstack-image-manully/</guid>
       <description>最近对制作OpenStack 虚拟机镜像起了兴趣，主要是因为自己在OpenStack集群上创建了一些虚拟机并安装了常用的软件，但是这个Open</description>
     </item>
     

@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Manila on RootDeep</title>
-    <link>https://rootdeep.github.io/tags/manila/</link>
+    <link>https://willzgli.github.io/tags/manila/</link>
     <description>Recent content in Manila on RootDeep</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
     <lastBuildDate>Thu, 21 Sep 2017 14:03:57 +0800</lastBuildDate>
     
-	<atom:link href="https://rootdeep.github.io/tags/manila/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://willzgli.github.io/tags/manila/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>OpenStack 微版本实现原理</title>
-      <link>https://rootdeep.github.io/posts/openstack-api-microversion/</link>
+      <link>https://willzgli.github.io/posts/openstack-api-microversion/</link>
       <pubDate>Thu, 21 Sep 2017 14:03:57 +0800</pubDate>
       
-      <guid>https://rootdeep.github.io/posts/openstack-api-microversion/</guid>
+      <guid>https://willzgli.github.io/posts/openstack-api-microversion/</guid>
       <description>在OpenStack Kilo 版本的Nova项目中，首次引入了 API Microversioning 的概念，随后各个项目遵循此设计，根据需求也引入了微版本功能。引入微版本主要目的就是</description>
     </item>
     

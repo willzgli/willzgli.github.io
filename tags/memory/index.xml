@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Memory on RootDeep</title>
-    <link>https://rootdeep.github.io/tags/memory/</link>
+    <link>https://willzgli.github.io/tags/memory/</link>
     <description>Recent content in Memory on RootDeep</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
     <lastBuildDate>Fri, 05 Oct 2018 03:03:57 +0800</lastBuildDate>
     
-	<atom:link href="https://rootdeep.github.io/tags/memory/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://willzgli.github.io/tags/memory/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Linux Free 命令浅析</title>
-      <link>https://rootdeep.github.io/posts/linux-free-command/</link>
+      <link>https://willzgli.github.io/posts/linux-free-command/</link>
       <pubDate>Fri, 05 Oct 2018 03:03:57 +0800</pubDate>
       
-      <guid>https://rootdeep.github.io/posts/linux-free-command/</guid>
+      <guid>https://willzgli.github.io/posts/linux-free-command/</guid>
       <description>Free 命令结果变化 最近，在用IOzone 对磁盘进行压力测试的时候发现，IOzone 一开启（216个线程同时写36个8T的磁盘，每个磁盘大概写6T</description>
     </item>
     

@@ -2,47 +2,47 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Categories on RootDeep</title>
-    <link>https://rootdeep.github.io/categories/</link>
+    <link>https://willzgli.github.io/categories/</link>
     <description>Recent content in Categories on RootDeep</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
     
-	<atom:link href="https://rootdeep.github.io/categories/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://willzgli.github.io/categories/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Github</title>
-      <link>https://rootdeep.github.io/categories/github/</link>
+      <link>https://willzgli.github.io/categories/github/</link>
       <pubDate>Tue, 15 May 2018 19:33:57 +0800</pubDate>
       
-      <guid>https://rootdeep.github.io/categories/github/</guid>
+      <guid>https://willzgli.github.io/categories/github/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Kubernetes</title>
-      <link>https://rootdeep.github.io/categories/kubernetes/</link>
+      <link>https://willzgli.github.io/categories/kubernetes/</link>
       <pubDate>Tue, 25 Dec 2018 10:22:57 +0800</pubDate>
       
-      <guid>https://rootdeep.github.io/categories/kubernetes/</guid>
+      <guid>https://willzgli.github.io/categories/kubernetes/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Linux Practice</title>
-      <link>https://rootdeep.github.io/categories/linux-practice/</link>
+      <link>https://willzgli.github.io/categories/linux-practice/</link>
       <pubDate>Fri, 05 Oct 2018 03:03:57 +0800</pubDate>
       
-      <guid>https://rootdeep.github.io/categories/linux-practice/</guid>
+      <guid>https://willzgli.github.io/categories/linux-practice/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Openstack</title>
-      <link>https://rootdeep.github.io/categories/openstack/</link>
+      <link>https://willzgli.github.io/categories/openstack/</link>
       <pubDate>Sat, 23 Jun 2018 11:18:57 +0800</pubDate>
       
-      <guid>https://rootdeep.github.io/categories/openstack/</guid>
+      <guid>https://willzgli.github.io/categories/openstack/</guid>
       <description></description>
     </item>
     

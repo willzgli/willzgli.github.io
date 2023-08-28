@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Github on RootDeep</title>
-    <link>https://rootdeep.github.io/categories/github/</link>
+    <link>https://willzgli.github.io/categories/github/</link>
     <description>Recent content in Github on RootDeep</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
     <lastBuildDate>Tue, 15 May 2018 19:33:57 +0800</lastBuildDate>
     
-	<atom:link href="https://rootdeep.github.io/categories/github/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://willzgli.github.io/categories/github/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>发布Gitbook至GitHub个人主页</title>
-      <link>https://rootdeep.github.io/posts/show-gitbook-with-github/</link>
+      <link>https://willzgli.github.io/posts/show-gitbook-with-github/</link>
       <pubDate>Tue, 15 May 2018 19:33:57 +0800</pubDate>
       
-      <guid>https://rootdeep.github.io/posts/show-gitbook-with-github/</guid>
+      <guid>https://willzgli.github.io/posts/show-gitbook-with-github/</guid>
       <description>这里不讲如何生成gitbook的html 静态网页，跳过这一步，从如何发布静态网页到GitHub的个人主页(http://{username}</description>
     </item>
     

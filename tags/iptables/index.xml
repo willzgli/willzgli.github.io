@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Iptables on RootDeep</title>
-    <link>https://rootdeep.github.io/tags/iptables/</link>
+    <link>https://willzgli.github.io/tags/iptables/</link>
     <description>Recent content in Iptables on RootDeep</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
     <lastBuildDate>Tue, 25 Dec 2018 10:22:57 +0800</lastBuildDate>
     
-	<atom:link href="https://rootdeep.github.io/tags/iptables/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://willzgli.github.io/tags/iptables/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>kube-proxy 源码分析</title>
-      <link>https://rootdeep.github.io/posts/kube-proxy-code-analysis/</link>
+      <link>https://willzgli.github.io/posts/kube-proxy-code-analysis/</link>
       <pubDate>Tue, 25 Dec 2018 10:22:57 +0800</pubDate>
       
-      <guid>https://rootdeep.github.io/posts/kube-proxy-code-analysis/</guid>
+      <guid>https://willzgli.github.io/posts/kube-proxy-code-analysis/</guid>
       <description>功能概述 kube-proxy是管理service的访问入口，包括集群内Pod到Service的访问和集群外访问service。当用户创建 service 的</description>
     </item>
     

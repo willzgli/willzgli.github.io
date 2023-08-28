@@ -3,266 +3,266 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>https://rootdeep.github.io/about/</loc>
+    <loc>https://willzgli.github.io/about/</loc>
     <lastmod>2014-04-09T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://rootdeep.github.io/posts/kube-proxy-code-analysis/</loc>
+    <loc>https://willzgli.github.io/posts/kube-proxy-code-analysis/</loc>
     <lastmod>2018-12-25T10:22:57+08:00</lastmod>
   </url>
   
   <url>
-    <loc>https://rootdeep.github.io/posts/linux-free-command/</loc>
+    <loc>https://willzgli.github.io/posts/linux-free-command/</loc>
     <lastmod>2018-10-05T03:03:57+08:00</lastmod>
   </url>
   
   <url>
-    <loc>https://rootdeep.github.io/posts/ssl/</loc>
+    <loc>https://willzgli.github.io/posts/ssl/</loc>
     <lastmod>2018-10-03T14:03:57+08:00</lastmod>
   </url>
   
   <url>
-    <loc>https://rootdeep.github.io/posts/rpc-rabbit-con-in-oslo-messaging/</loc>
+    <loc>https://willzgli.github.io/posts/rpc-rabbit-con-in-oslo-messaging/</loc>
     <lastmod>2018-06-23T11:18:57+08:00</lastmod>
   </url>
   
   <url>
-    <loc>https://rootdeep.github.io/posts/rpc-call-procedure-in-oslo-messaging/</loc>
+    <loc>https://willzgli.github.io/posts/rpc-call-procedure-in-oslo-messaging/</loc>
     <lastmod>2018-06-21T09:18:57+08:00</lastmod>
   </url>
   
   <url>
-    <loc>https://rootdeep.github.io/posts/auto-scale-k8s-volume/</loc>
+    <loc>https://willzgli.github.io/posts/auto-scale-k8s-volume/</loc>
     <lastmod>2018-06-15T20:18:57+08:00</lastmod>
   </url>
   
   <url>
-    <loc>https://rootdeep.github.io/posts/make-openstack-image-manully/</loc>
+    <loc>https://willzgli.github.io/posts/make-openstack-image-manully/</loc>
     <lastmod>2018-06-07T19:05:57+08:00</lastmod>
   </url>
   
   <url>
-    <loc>https://rootdeep.github.io/posts/simple-operation-of-helm-repo/</loc>
+    <loc>https://willzgli.github.io/posts/simple-operation-of-helm-repo/</loc>
     <lastmod>2018-05-16T14:03:57+08:00</lastmod>
   </url>
   
   <url>
-    <loc>https://rootdeep.github.io/posts/fix-stale-node-in-etcd-cluster/</loc>
+    <loc>https://willzgli.github.io/posts/fix-stale-node-in-etcd-cluster/</loc>
     <lastmod>2018-05-16T10:22:57+08:00</lastmod>
   </url>
   
   <url>
-    <loc>https://rootdeep.github.io/posts/create-vm-image-with-oz/</loc>
+    <loc>https://willzgli.github.io/posts/create-vm-image-with-oz/</loc>
     <lastmod>2018-05-16T10:22:57+08:00</lastmod>
   </url>
   
   <url>
-    <loc>https://rootdeep.github.io/posts/show-gitbook-with-github/</loc>
+    <loc>https://willzgli.github.io/posts/show-gitbook-with-github/</loc>
     <lastmod>2018-05-15T19:33:57+08:00</lastmod>
   </url>
   
   <url>
-    <loc>https://rootdeep.github.io/posts/cat-special-charactars-in-shell-to-file/</loc>
+    <loc>https://willzgli.github.io/posts/cat-special-charactars-in-shell-to-file/</loc>
     <lastmod>2018-04-20T20:18:57+08:00</lastmod>
   </url>
   
   <url>
-    <loc>https://rootdeep.github.io/posts/openstack-api-microversion/</loc>
+    <loc>https://willzgli.github.io/posts/openstack-api-microversion/</loc>
     <lastmod>2017-09-21T14:03:57+08:00</lastmod>
   </url>
   
   <url>
-    <loc>https://rootdeep.github.io/posts/volume-management-part1/</loc>
+    <loc>https://willzgli.github.io/posts/volume-management-part1/</loc>
     <lastmod>2017-06-01T12:18:57+08:00</lastmod>
   </url>
   
   <url>
-    <loc>https://rootdeep.github.io/</loc>
+    <loc>https://willzgli.github.io/</loc>
     <lastmod>2014-04-09T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://rootdeep.github.io/tags/cat/</loc>
+    <loc>https://willzgli.github.io/tags/cat/</loc>
     <lastmod>2018-04-20T20:18:57+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://rootdeep.github.io/categories/</loc>
+    <loc>https://willzgli.github.io/categories/</loc>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://rootdeep.github.io/tags/etcd/</loc>
+    <loc>https://willzgli.github.io/tags/etcd/</loc>
     <lastmod>2018-05-16T10:22:57+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://rootdeep.github.io/tags/gitbook-github/</loc>
+    <loc>https://willzgli.github.io/tags/gitbook-github/</loc>
     <lastmod>2018-05-15T19:33:57+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://rootdeep.github.io/categories/github/</loc>
+    <loc>https://willzgli.github.io/categories/github/</loc>
     <lastmod>2018-05-15T19:33:57+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://rootdeep.github.io/tags/helm/</loc>
+    <loc>https://willzgli.github.io/tags/helm/</loc>
     <lastmod>2018-05-16T14:03:57+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://rootdeep.github.io/tags/image/</loc>
+    <loc>https://willzgli.github.io/tags/image/</loc>
     <lastmod>2018-05-16T10:22:57+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://rootdeep.github.io/tags/iptables/</loc>
+    <loc>https://willzgli.github.io/tags/iptables/</loc>
     <lastmod>2018-12-25T10:22:57+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://rootdeep.github.io/tags/k8s/</loc>
+    <loc>https://willzgli.github.io/tags/k8s/</loc>
     <lastmod>2018-06-15T20:18:57+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://rootdeep.github.io/tags/kube-proxy/</loc>
+    <loc>https://willzgli.github.io/tags/kube-proxy/</loc>
     <lastmod>2018-12-25T10:22:57+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://rootdeep.github.io/categories/kubernetes/</loc>
+    <loc>https://willzgli.github.io/categories/kubernetes/</loc>
     <lastmod>2018-12-25T10:22:57+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://rootdeep.github.io/tags/kubernetes/</loc>
+    <loc>https://willzgli.github.io/tags/kubernetes/</loc>
     <lastmod>2018-05-16T14:03:57+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://rootdeep.github.io/tags/linux/</loc>
+    <loc>https://willzgli.github.io/tags/linux/</loc>
     <lastmod>2018-10-05T03:03:57+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://rootdeep.github.io/categories/linux-practice/</loc>
+    <loc>https://willzgli.github.io/categories/linux-practice/</loc>
     <lastmod>2018-10-05T03:03:57+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://rootdeep.github.io/tags/manila/</loc>
+    <loc>https://willzgli.github.io/tags/manila/</loc>
     <lastmod>2017-09-21T14:03:57+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://rootdeep.github.io/tags/memory/</loc>
+    <loc>https://willzgli.github.io/tags/memory/</loc>
     <lastmod>2018-10-05T03:03:57+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://rootdeep.github.io/tags/microversion/</loc>
+    <loc>https://willzgli.github.io/tags/microversion/</loc>
     <lastmod>2017-09-21T14:03:57+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://rootdeep.github.io/categories/openstack/</loc>
+    <loc>https://willzgli.github.io/categories/openstack/</loc>
     <lastmod>2018-06-23T11:18:57+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://rootdeep.github.io/tags/openstack/</loc>
+    <loc>https://willzgli.github.io/tags/openstack/</loc>
     <lastmod>2018-06-23T11:18:57+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://rootdeep.github.io/tags/openstack-image/</loc>
+    <loc>https://willzgli.github.io/tags/openstack-image/</loc>
     <lastmod>2018-06-07T19:05:57+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://rootdeep.github.io/tags/oslo.messaging/</loc>
+    <loc>https://willzgli.github.io/tags/oslo.messaging/</loc>
     <lastmod>2018-06-23T11:18:57+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://rootdeep.github.io/tags/oz/</loc>
+    <loc>https://willzgli.github.io/tags/oz/</loc>
     <lastmod>2018-05-16T10:22:57+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://rootdeep.github.io/posts/</loc>
+    <loc>https://willzgli.github.io/posts/</loc>
     <lastmod>2018-12-25T10:22:57+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://rootdeep.github.io/tags/rabbitmq/</loc>
+    <loc>https://willzgli.github.io/tags/rabbitmq/</loc>
     <lastmod>2018-06-23T11:18:57+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://rootdeep.github.io/tags/resize/</loc>
+    <loc>https://willzgli.github.io/tags/resize/</loc>
     <lastmod>2018-06-15T20:18:57+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://rootdeep.github.io/tags/shell-script/</loc>
+    <loc>https://willzgli.github.io/tags/shell-script/</loc>
     <lastmod>2018-04-20T20:18:57+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://rootdeep.github.io/tags/</loc>
+    <loc>https://willzgli.github.io/tags/</loc>
     <lastmod>2018-04-20T20:18:57+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://rootdeep.github.io/tags/tsl/</loc>
+    <loc>https://willzgli.github.io/tags/tsl/</loc>
     <lastmod>2018-10-03T14:03:57+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://rootdeep.github.io/tags/v1.12/</loc>
+    <loc>https://willzgli.github.io/tags/v1.12/</loc>
     <lastmod>2018-12-25T10:22:57+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://rootdeep.github.io/tags/vm/</loc>
+    <loc>https://willzgli.github.io/tags/vm/</loc>
     <lastmod>2018-05-16T10:22:57+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://rootdeep.github.io/tags/volume/</loc>
+    <loc>https://willzgli.github.io/tags/volume/</loc>
     <lastmod>2018-06-15T20:18:57+08:00</lastmod>
     <priority>0</priority>
   </url>

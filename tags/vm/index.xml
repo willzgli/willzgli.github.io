@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Vm on RootDeep</title>
-    <link>https://rootdeep.github.io/tags/vm/</link>
+    <link>https://willzgli.github.io/tags/vm/</link>
     <description>Recent content in Vm on RootDeep</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
     <lastBuildDate>Wed, 16 May 2018 10:22:57 +0800</lastBuildDate>
     
-	<atom:link href="https://rootdeep.github.io/tags/vm/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://willzgli.github.io/tags/vm/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>使用Oz工具自动化虚拟机镜像</title>
-      <link>https://rootdeep.github.io/posts/create-vm-image-with-oz/</link>
+      <link>https://willzgli.github.io/posts/create-vm-image-with-oz/</link>
       <pubDate>Wed, 16 May 2018 10:22:57 +0800</pubDate>
       
-      <guid>https://rootdeep.github.io/posts/create-vm-image-with-oz/</guid>
+      <guid>https://willzgli.github.io/posts/create-vm-image-with-oz/</guid>
       <description>Oz 简介 镜像制作一般分为手动制作和自动制作。 手动制作主要流程： 利用OS镜像启动一个虚拟机实例，启动镜像的工具包括virt-install、vi</description>
     </item>
     
